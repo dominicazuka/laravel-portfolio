@@ -11,35 +11,35 @@
                 <div class="col-lg-6">
                     <ul class="about__icons__wrap">
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/xd_light.png') }}" alt="XD">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/xd.png') }}" alt="XD">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/react-js-logo.png') }}" alt="React">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/react-js-logo.png') }}" alt="React">
                         </li>
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/skeatch_light.png') }}"
-                                alt="Skeatch">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/skeatch.png') }}" alt="Skeatch">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/mongo-db.png') }}"
+                                alt="MongoDB">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/mongo-db.png') }}" alt="MongoDB">
                         </li>
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/illustrator_light.png') }}"
-                                alt="Illustrator">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/illustrator.png') }}"
-                                alt="Illustrator">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/laravel-icon.png') }}"
+                                alt="Laravel">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/laravel-icon.png') }}"
+                                alt="Laravel">
                         </li>
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/hotjar_light.png') }}"
-                                alt="Hotjar">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/hotjar.png') }}" alt="Hotjar">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/docker.png') }}"
+                                alt="Docker">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/docker.png') }}" alt="Docker">
                         </li>
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/invision_light.png') }}"
-                                alt="Invision">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/invision.png') }}" alt="Invision">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/adobe-suite.png') }}"
+                                alt="Adobe">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/adobe-suite.png') }}" alt="Adobe">
                         </li>
                         <li>
-                            <img class="light" src="{{ asset('frontend/assets/img/icons/photoshop_light.png') }}"
-                                alt="Photoshop">
-                            <img class="dark" src="{{ asset('frontend/assets/img/icons/photoshop.png') }}"
-                                alt="Photoshop">
+                            <img class="light" src="{{ asset('frontend/assets/img/icons/nodejs.png') }}"
+                                alt="nodejs">
+                            <img class="dark" src="{{ asset('frontend/assets/img/icons/nodejs.png') }}"
+                                alt="nodejs">
                         </li>
                         <li>
                             <img class="light" src="{{ asset('frontend/assets/img/icons/figma_light.png') }}"
