@@ -9,23 +9,24 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Add About Multi-Image</h4>
-                            <br/>
-                            <br/>
-                            <form method="post" action="{{ route('update.about') }}" enctype="multipart/form-data">
+                            <br />
+                            <br />
+                            <form method="post" action="{{ route('store.multi.image') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 {{-- multi image --}}
                                 <div class="row mb-3">
-                                    <label for="about_image" class="col-sm-2 col-form-label">About Multi Image</label>
+                                    <label for="multi_image" class="col-sm-2 col-form-label">About Multi Image</label>
                                     <div class="col-sm-10">
-                                        <input name="multi_image" class="form-control" type="file" id="image">
+                                        <input name="multi_image[]" class="form-control" type="file" id="image"
+                                            multiple="">
                                     </div>
                                 </div>
 
                                 {{-- display image --}}
                                 <div class="row mb-3">
-                                    <label for="profile_image" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label for="display_multi_image" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10" id="imagePreviewContainer">
                                         <img class="rounded avatar-lg" id="showImage"
                                             src="{{  url('upload/anonymous.png')  }}"
                                             alt="About Multi Image">
@@ -54,4 +55,22 @@
             });
         });
     </script>
+
+    {{-- <script type="text/javascript">
+        $(document).ready(function(){
+            $('#image').change(function(e) {
+                $('#imagePreviewContainer').empty(); //clear previous images
+                for (var i = 0; i < e.target.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var img = $('<img>').addClass('rounded avatar-lg ml-3');
+                        img.attr('src', e.target.result);
+                        img.attr('alt', 'About Multi Image');
+                        $('#imagePreviewContainer').append(img);
+                    }
+                    reader.readAsDataURL(e.target.files[i]);
+                }
+            });
+        });
+    </script> --}}
 @endsection
