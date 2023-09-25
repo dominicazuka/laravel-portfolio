@@ -47,7 +47,7 @@
                                 <div class="row mb-3">
                                     <label for="long_description" class="col-sm-2 col-form-label">Long Description</label>
                                     <div class="col-sm-10">
-                                        <textarea name="long_description" class="form-control" id="elm1" name="area">
+                                        <textarea name="long_description" class="form-control" id="elm1">
                                                 {{ $aboutpage->long_description }}
                                             </textarea>
                                     </div>
@@ -72,7 +72,8 @@
                                 </div>
 
                                 {{-- submit --}}
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update About Page">
+                                <input type="submit" class="btn btn-info waves-effect waves-light"
+                                    value="Update About Page">
                             </form>
 
                         </div>

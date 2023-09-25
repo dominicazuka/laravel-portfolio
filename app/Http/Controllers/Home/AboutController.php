@@ -11,18 +11,20 @@ use Illuminate\Support\Carbon;
 
 class AboutController extends Controller
 {
-    public function AboutPage(){
+    public function AboutPage()
+    {
         $aboutpage = About::find(1);
         return view('admin.about_page.about_page_all', compact('aboutpage'));
-    }// end method
+    } // end method
 
-    public function UpdateAbout(Request $request){
+    public function UpdateAbout(Request $request)
+    {
         $about_id = $request->id;
-        if($request->file('about_image')){
+        if ($request->file('about_image')) {
             $image = $request->file('about_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // random generated name
-            Image::make($image)->resize(523,605)->save('upload/home_about/'.$name_gen);
-            $save_url = 'upload/home_about/'.$name_gen;
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();  // random generated name
+            Image::make($image)->resize(523, 605)->save('upload/home_about/' . $name_gen);
+            $save_url = 'upload/home_about/' . $name_gen;
             About::findOrFail($about_id)->update([
                 'title' => $request->title,
                 'short_title' => $request->short_title,
@@ -35,7 +37,7 @@ class AboutController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             About::findOrFail($about_id)->update([
                 'title' => $request->title,
                 'short_title' => $request->short_title,
@@ -48,27 +50,30 @@ class AboutController extends Controller
             );
             return redirect()->back()->with($notification);
         }
-    }//end method
+    } //end method
 
-    public function HomeAbout(){
+    public function HomeAbout()
+    {
         $aboutpage = About::find(1);
         return view('frontend.about_page', compact('aboutpage'));
-    }//end method
+    } //end method
 
-    public function AboutMultiImage(){
+    public function AboutMultiImage()
+    {
         return view('admin.about_page.multi_image');
-    }//end method
+    } //end method
 
-public function StoreMultiImage(Request $request){
+    public function StoreMultiImage(Request $request)
+    {
 
         $image = $request->file('multi_image');
 
         foreach ($image as $multi_image) {
 
-           $name_gen = hexdec(uniqid()).'.'.$multi_image->getClientOriginalExtension();  // random generated name
+            $name_gen = hexdec(uniqid()) . '.' . $multi_image->getClientOriginalExtension();  // random generated name
 
-            Image::make($multi_image)->resize(220,220)->save('upload/multi/'.$name_gen);
-            $save_url = 'upload/multi/'.$name_gen;
+            Image::make($multi_image)->resize(220, 220)->save('upload/multi/' . $name_gen);
+            $save_url = 'upload/multi/' . $name_gen;
 
             MultiImage::insert([
 
@@ -76,38 +81,38 @@ public function StoreMultiImage(Request $request){
                 'created_at' => Carbon::now()
 
             ]);
+        } // End of foreach
 
-             } // End of foreach
 
-
-            $notification = array(
+        $notification = array(
             'message' => 'Multi Image Inserted Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->route('all.multi.image')->with($notification);
+    } // End Method
 
 
-     }// End Method
-
-
-     public function AllMultiImage(){
+    public function AllMultiImage()
+    {
         $allMultiImage = MultiImage::all();
         return view('admin.about_page.all_multi_image', compact('allMultiImage'));
-     }//end method
+    } //end method
 
-     public function EditMultiImage($id){
+    public function EditMultiImage($id)
+    {
         $multiImage = MultiImage::findOrFail($id);
         return view('admin.about_page.edit_multi_image', compact('multiImage'));
-     }//end method
+    } //end method
 
-     public function UpdateMultiImage(Request $request){
+    public function UpdateMultiImage(Request $request)
+    {
         $multi_image_id = $request->id;
-        if($request->file('multi_image')){
+        if ($request->file('multi_image')) {
             $image = $request->file('multi_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // random generated name
-            Image::make($image)->resize(220,220)->save('upload/multi/'.$name_gen);
-            $save_url = 'upload/multi/'.$name_gen;
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();  // random generated name
+            Image::make($image)->resize(220, 220)->save('upload/multi/' . $name_gen);
+            $save_url = 'upload/multi/' . $name_gen;
             MultiImage::findOrFail($multi_image_id)->update([
                 'multi_image' => $save_url,
             ]);
@@ -117,9 +122,10 @@ public function StoreMultiImage(Request $request){
             );
             return redirect()->route('all.multi.image')->with($notification);
         }
-     }// end method
+    } // end method
 
-     public function DeleteMultiImage($id){
+    public function DeleteMultiImage($id)
+    {
         //delete image on localhost
         $multi = MultiImage::findOrFail($id);
         $img = $multi->multi_image;
@@ -131,5 +137,5 @@ public function StoreMultiImage(Request $request){
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
-     }//end method
+    } //end method
 }

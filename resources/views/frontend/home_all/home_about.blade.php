@@ -1,5 +1,6 @@
 @php
     $aboutpage= App\Models\About::find(1);
+    $allMultiImage = App\Models\MultiImage::all();
 @endphp
 
 <section id="aboutSection" class="about">
@@ -7,42 +8,11 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <ul class="about__icons__wrap">
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/react-js-logo.png') }}" alt="React">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/react-js-logo.png') }}" alt="React">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/mongo-db.png') }}"
-                            alt="MongoDB">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/mongo-db.png') }}" alt="MongoDB">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/laravel-icon.png') }}"
-                            alt="Laravel">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/laravel-icon.png') }}"
-                            alt="Laravel">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/docker.png') }}"
-                            alt="Docker">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/docker.png') }}" alt="Docker">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/adobe-suite.png') }}"
-                            alt="Adobe">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/adobe-suite.png') }}" alt="Adobe">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/nodejs.png') }}"
-                            alt="nodejs">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/nodejs.png') }}"
-                            alt="nodejs">
-                    </li>
-                    <li>
-                        <img class="light" src="{{ asset('frontend/assets/img/icons/figma_light.png') }}"
-                            alt="Figma">
-                        <img class="dark" src="{{ asset('frontend/assets/img/icons/figma.png') }}" alt="Figma">
-                    </li>
+                    @foreach ($allMultiImage as $item)
+                        <li>
+                            <img class="light" src="{{ asset($item->multi_image) }}" alt="Icons">
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-lg-6">
