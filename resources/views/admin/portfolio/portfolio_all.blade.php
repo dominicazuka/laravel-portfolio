@@ -48,7 +48,7 @@
                                                     title="Edit Image">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('delete.multi.image', $item->id) }}"
+                                                <a href="{{ route('delete.portfolio', $item->id) }}"
                                                     class="btn btn-danger sm ml-2" title="Delete Image" id="delete">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
