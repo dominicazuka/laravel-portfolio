@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('portfolio_title')->nullable();
             $table->string('portfolio_image')->nullable();
             $table->text('portfolio_description')->nullable();
-            $table->string('portfolio_date')->nullable();
+            $table->date('portfolio_date')->nullable();
             $table->string('portfolio_location')->nullable();
             $table->string('portfolio_client')->nullable();
             $table->string('portfolio_category')->nullable();

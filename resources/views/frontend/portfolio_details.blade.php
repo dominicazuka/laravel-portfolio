@@ -61,15 +61,12 @@
                             <div class="widget">
                                 <h5 class="title">Project Information</h5>
                                 <ul class="sidebar__contact__info">
-                                    <li><span>Date :</span> January, 2021</li>
-                                    <li><span>Location :</span> East Meadow NY 11554</li>
-                                    <li><span>Client :</span> American</li>
-                                    <li class="cagegory"><span>Category :</span>
-                                        <a href="portfolio.html">Photo,</a>
-                                        <a href="portfolio.html">UI/UX</a>
-                                    </li>
-                                    <li><span>Project Link :</span> <a
-                                            href="portfolio-details.html">https://www.yournews.com/</a></li>
+                                    <li><span>Date :</span> {{ $portfolio->portfolio_date }}</li>
+                                    <li><span>Location :</span> {{ $portfolio->portfolio_location }}</li>
+                                    <li><span>Client :</span> {{ $portfolio->portfolio_client }}</li>
+                                    <li class="category"><span>Category :</span>{{ $portfolio->portfolio_category }}</li>
+                                    <li><span>Project Link :</span> <a href="{{ $portfolio->portfolio_link }}"
+                                            target="_blank">{{ $portfolio->portfolio_link }}</a></li>
                                 </ul>
                             </div>
                             <div class="widget">

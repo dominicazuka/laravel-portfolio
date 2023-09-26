@@ -1,6 +1,13 @@
 @extends('admin.admin_master')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    {{-- Date Picker Bootstrap 4 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+        rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
@@ -9,6 +16,8 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Edit Portfolio Page</h4>
+                            <br />
+                            <br />
                             <form method="post" action="{{ route('update.portfolio') }}" enctype="multipart/form-data">
                                 @csrf
 
@@ -77,6 +86,78 @@
                                     </div>
                                 </div>
 
+                                {{-- portfolio_date --}}
+                                <div class="row mb-3">
+                                    <label for="portfolio_date" class="col-sm-2 col-form-label">Edit Portfolio
+                                        Date</label>
+                                    <div class='col-sm-10'>
+                                        <input type='text' class="date form-control" name="portfolio_date"
+                                            placeholder="Click to add date" value="{{ $portfolio->portfolio_date }}" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        @error('portfolio_date')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- portfolio_location --}}
+                                <div class="row mb-3">
+                                    <label for="portfolio_location" class="col-sm-2 col-form-label">Edit Portfolio
+                                        Location</label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_location" class="form-control" type="text"
+                                            placeholder="Edit location" id="portfolio_location"
+                                            value="{{ $portfolio->portfolio_location }}">
+                                        @error('portfolio_location')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- portfolio_client --}}
+                                <div class="row mb-3">
+                                    <label for="portfolio_client" class="col-sm-2 col-form-label">Edit Portfolio
+                                        Client</label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_client" class="form-control" type="text"
+                                            placeholder="Edit client" id="portfolio_client"
+                                            value="{{ $portfolio->portfolio_client }}">
+                                        @error('portfolio_client')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- portfolio_category --}}
+                                <div class="row mb-3">
+                                    <label for="portfolio_category" class="col-sm-2 col-form-label">Edit Portfolio
+                                        Category</label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_category" class="form-control" type="text"
+                                            placeholder="Edit category" id="portfolio_category"
+                                            value="{{ $portfolio->portfolio_category }}">
+                                        @error('portfolio_category')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- portfolio_link --}}
+                                <div class="row mb-3">
+                                    <label for="portfolio_link" class="col-sm-2 col-form-label">Edit Portfolio
+                                        Location</label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_link" class="form-control" type="text"
+                                            placeholder="Edit link" id="portfolio_link"
+                                            value="{{ $portfolio->portfolio_link }}">
+                                        @error('portfolio_link')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 {{-- submit --}}
                                 <input type="submit" class="btn btn-info waves-effect waves-light"
                                     value="Update Portfolio Data">
@@ -98,6 +179,14 @@
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
+        });
+    </script>
+
+    {{-- Date Picker Bootstrap 4 --}}
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
         });
     </script>
 @endsection

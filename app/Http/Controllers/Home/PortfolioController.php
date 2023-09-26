@@ -76,6 +76,25 @@ class PortfolioController extends Controller
 
     public function UpdatePortfolio(Request $request)
     {
+        $request->validate([
+            'portfolio_name' => 'required',
+            'portfolio_title' => 'required',
+            'portfolio_description' => 'required',
+            'portfolio_date' => 'required',
+            'portfolio_location' => 'required',
+            'portfolio_client' => 'required',
+            'portfolio_category' => 'required',
+            'portfolio_link' => 'required',
+        ], [
+            'portfolio_name.required' => 'Portfolio name is required',
+            'portfolio_title.required' => 'Portfolio title is required',
+            'portfolio_description.required' => 'Portfolio description is required',
+            'portfolio_date.required' => 'Portfolio date is required',
+            'portfolio_location.required' => 'Portfolio location is required',
+            'portfolio_client.required' => 'Portfolio client is required',
+            'portfolio_category.required' => 'Portfolio category is required',
+            'portfolio_link.required' => 'Portfolio link is required',
+        ]);
         $portfolio_id = $request->id;
         if ($request->file('portfolio_image')) {
             $image = $request->file('portfolio_image');
