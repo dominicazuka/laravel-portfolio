@@ -28,9 +28,22 @@ class PortfolioController extends Controller
             'portfolio_name' => 'required',
             'portfolio_title' => 'required',
             'portfolio_image' => 'required',
+            'portfolio_description' => 'required',
+            'portfolio_date' => 'required',
+            'portfolio_location' => 'required',
+            'portfolio_client' => 'required',
+            'portfolio_category' => 'required',
+            'portfolio_link' => 'required',
         ], [
             'portfolio_name.required' => 'Portfolio name is required',
             'portfolio_title.required' => 'Portfolio title is required',
+            'portfolio_image.required' => 'Portfolio image is required',
+            'portfolio_description.required' => 'Portfolio description is required',
+            'portfolio_date.required' => 'Portfolio date is required',
+            'portfolio_location.required' => 'Portfolio location is required',
+            'portfolio_client.required' => 'Portfolio client is required',
+            'portfolio_category.required' => 'Portfolio category is required',
+            'portfolio_link.required' => 'Portfolio link is required',
         ]);
         $image = $request->file('portfolio_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension(); //generate random name
@@ -41,10 +54,15 @@ class PortfolioController extends Controller
             'portfolio_title' => $request->portfolio_title,
             'portfolio_description' => $request->portfolio_description,
             'portfolio_image' => $save_url,
+            'portfolio_date' => $request->portfolio_date,
+            'portfolio_location' => $request->portfolio_location,
+            'portfolio_client' => $request->portfolio_client,
+            'portfolio_category' => $request->portfolio_category,
+            'portfolio_link' => $request->portfolio_link,
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Portfolio Data Updated Successfully',
+            'message' => 'Portfolio Data Created Successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('all.portfolio')->with($notification);
@@ -69,6 +87,11 @@ class PortfolioController extends Controller
                 'portfolio_title' => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
                 'portfolio_image' => $save_url,
+                'portfolio_date' => $request->portfolio_date,
+                'portfolio_location' => $request->portfolio_location,
+                'portfolio_client' => $request->portfolio_client,
+                'portfolio_category' => $request->portfolio_category,
+                'portfolio_link' => $request->portfolio_link,
             ]);
             $notification = array(
                 'message' => 'Portfolio Data Updated with Image Successfully',
@@ -80,6 +103,11 @@ class PortfolioController extends Controller
                 'portfolio_name' => $request->portfolio_name,
                 'portfolio_title' => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
+                'portfolio_date' => $request->portfolio_date,
+                'portfolio_location' => $request->portfolio_location,
+                'portfolio_client' => $request->portfolio_client,
+                'portfolio_category' => $request->portfolio_category,
+                'portfolio_link' => $request->portfolio_link,
             ]);
             $notification = array(
                 'message' => 'Portfolio Data Updated without Image Successfully',
@@ -102,5 +130,11 @@ class PortfolioController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    } //end method
+
+    public function PortfolioDetails($id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+        return view('frontend.portfolio_details', compact('portfolio'));
     } //end method
 }

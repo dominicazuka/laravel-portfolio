@@ -50,6 +50,9 @@
                                         <textarea name="portfolio_description" class="form-control" id="elm1">
                                                 {{ $portfolio->portfolio_description }}
                                             </textarea>
+                                        @error('portfolio_description')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -59,6 +62,9 @@
                                         Image</label>
                                     <div class="col-sm-10">
                                         <input name="portfolio_image" class="form-control" type="file" id="image">
+                                        @error('portfolio_image')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
