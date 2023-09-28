@@ -7,6 +7,7 @@
         rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    {{-- Bootstrap Tags --}}
     <style type="text/css">
         .bootstrap-tagsinput .tag {
             margin-right: 2px;
@@ -22,18 +23,23 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Add Blog Page</h4><br />
-                            <form method="post" action="{{ route('store.blog') }}" enctype="multipart/form-data">
+                            <h4 class="card-title">Edit Blog Page</h4><br />
+                            <form method="post" action="{{ route('update.blog') }}" enctype="multipart/form-data">
                                 @csrf
+
+                                <input name="id" type="hidden" value="{{ $blog->id }}">
 
                                 {{-- blog_category_id --}}
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Blog Category Name</label>
+                                    <label class="col-sm-2 col-form-label">Edit Category Name</label>
                                     <div class="col-sm-10">
-                                        <select name="blog_category_id" class="form-select" aria-label="Blog Category Name">
+                                        <select name="blog_category_id" class="form-select"
+                                            aria-label="Edit Blog Category Name">
                                             <option selected="">Select Category</option>
-                                            @foreach ($categories as $cat)
-                                                <option value="{{ $cat->id }}">{{ $cat->blog_category }}</option>
+                                            @foreach ($category as $cat)
+                                                <option value="{{ $cat->id }}"
+                                                    {{ $cat->id == $blog->blog_category_id ? 'selected' : '' }}>
+                                                    {{ $cat->blog_category }}</option>
                                             @endforeach
                                         </select>
                                         @error('blog_category_id')
@@ -44,10 +50,10 @@
 
                                 {{-- blog_title --}}
                                 <div class="row mb-3">
-                                    <label for="blog_title" class="col-sm-2 col-form-label">Blog Title</label>
+                                    <label for="blog_title" class="col-sm-2 col-form-label">Edit Blog Title</label>
                                     <div class="col-sm-10">
-                                        <input name="blog_title" class="form-control" type="text" placeholder="Add title"
-                                            id="blog_title">
+                                        <input name="blog_title" class="form-control" type="text"
+                                            placeholder="Edit title" id="blog_title" value="{{ $blog->blog_title }}">
                                         @error('blog_title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -56,10 +62,10 @@
 
                                 {{-- blog_tags --}}
                                 <div class="row mb-3">
-                                    <label for="blog_tags" class="col-sm-2 col-form-label">Blog Title</label>
+                                    <label for="blog_tags" class="col-sm-2 col-form-label">Edit Blog Title</label>
                                     <div class="col-sm-10">
-                                        <input name="blog_tags" value="home,tech" class="form-control" type="text"
-                                            placeholder="Add tags" data-role="tagsinput">
+                                        <input name="blog_tags" value="{{ $blog->blog_tags }}" class="form-control"
+                                            type="text" placeholder="Add tags" data-role="tagsinput">
                                         @error('blog_tags')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -68,11 +74,11 @@
 
                                 {{-- blog_description --}}
                                 <div class="row mb-3">
-                                    <label for="blog_description" class="col-sm-2 col-form-label">Blog
+                                    <label for="blog_description" class="col-sm-2 col-form-label">Edit Blog
                                         Description</label>
                                     <div class="col-sm-10">
                                         <textarea name="blog_description" class="form-control" id="elm1">
-
+                                               {{ $blog->blog_description }}
                                             </textarea>
                                         @error('blog_description')
                                             <span class="text-danger">{{ $message }}</span>
@@ -82,7 +88,7 @@
 
                                 {{-- blog_image --}}
                                 <div class="row mb-3">
-                                    <label for="blog_image" class="col-sm-2 col-form-label">Blog Image</label>
+                                    <label for="blog_image" class="col-sm-2 col-form-label">Edit Blog Image</label>
                                     <div class="col-sm-10">
                                         <input name="blog_image" class="form-control" type="file" id="image">
                                         @error('blog_image')
@@ -95,14 +101,14 @@
                                 <div class="row mb-3">
                                     <label for="display_blog_image" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <img class="rounded avatar-lg" id="showImage"
-                                            src="{{ url('upload/anonymous.png') }}" alt="Blog Image">
+                                        <img class="rounded avatar-lg" id="showImage" src="{{ asset($blog->blog_image) }}"
+                                            alt="Blog Image">
                                     </div>
                                 </div>
 
                                 {{-- submit --}}
                                 <input type="submit" class="btn btn-info waves-effect waves-light"
-                                    value="Insert Blog Data">
+                                    value="Update Blog Data">
                             </form>
 
                         </div>

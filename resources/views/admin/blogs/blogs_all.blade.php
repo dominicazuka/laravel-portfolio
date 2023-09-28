@@ -35,10 +35,10 @@
 
                                 <tbody>
                                     @php($i = 1)
-                                    @foreach ($blogs as $item)
+                                    @foreach ($blogs as $key => $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->blog_category_id }}</td>
+                                            <td>{{ $item['category']['blog_category'] }}</td>
                                             <td>{{ $item->blog_title }}</td>
                                             <td>{{ $item->blog_tags }}</td>
                                             <td>
@@ -46,12 +46,12 @@
                                                     style="width:60px; height:60px;" />
                                             </td>
                                             <td>
-                                                <a href="{{ route('edit.portfolio', $item->id) }}" class="btn btn-info sm"
-                                                    title="Edit Image">
+                                                <a href="{{ route('edit.blog', $item->id) }}" class="btn btn-info sm"
+                                                    title="Edit Blog Post">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('delete.portfolio', $item->id) }}"
-                                                    class="btn btn-danger sm ml-2" title="Delete Image" id="delete">
+                                                <a href="{{ route('delete.blog', $item->id) }}"
+                                                    class="btn btn-danger sm ml-2" title="Delete Blog Post" id="delete">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
