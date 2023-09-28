@@ -95,13 +95,23 @@ class PortfolioController extends Controller
             'portfolio_category.required' => 'Portfolio category is required',
             'portfolio_link.required' => 'Portfolio link is required',
         ]);
-        $portfolio_id = $request->id;
+
+        $portfolio = Portfolio::findOrFail($request->id); // Retrieve the existing portfolio data
+
         if ($request->file('portfolio_image')) {
+            // Check if a new image is being uploaded
             $image = $request->file('portfolio_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(1020, 519)->save('upload/portfolio/' . $name_gen);
             $save_url = 'upload/portfolio/' . $name_gen;
-            Portfolio::findOrFail($portfolio_id)->update([
+
+            // Delete the existing image on localhost
+            if (file_exists($portfolio->portfolio_image)) {
+                unlink($portfolio->portfolio_image);
+            }
+
+            // Update the portfolio data with the new image
+            $portfolio->update([
                 'portfolio_name' => $request->portfolio_name,
                 'portfolio_title' => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
@@ -112,13 +122,14 @@ class PortfolioController extends Controller
                 'portfolio_category' => $request->portfolio_category,
                 'portfolio_link' => $request->portfolio_link,
             ]);
-            $notification = array(
+
+            $notification = [
                 'message' => 'Portfolio Data Updated with Image Successfully',
-                'alert-type' => 'success'
-            );
-            return redirect()->route('all.portfolio')->with($notification);
+                'alert-type' => 'success',
+            ];
         } else {
-            Portfolio::findOrFail($portfolio_id)->update([
+            // No new image uploaded, update the portfolio data without changing the image
+            $portfolio->update([
                 'portfolio_name' => $request->portfolio_name,
                 'portfolio_title' => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
@@ -128,13 +139,16 @@ class PortfolioController extends Controller
                 'portfolio_category' => $request->portfolio_category,
                 'portfolio_link' => $request->portfolio_link,
             ]);
-            $notification = array(
+
+            $notification = [
                 'message' => 'Portfolio Data Updated without Image Successfully',
-                'alert-type' => 'success'
-            );
-            return redirect()->route('all.portfolio')->with($notification);
+                'alert-type' => 'success',
+            ];
         }
+
+        return redirect()->route('all.portfolio')->with($notification);
     } //end method
+
 
     public function DeletePortfolio($id)
     {

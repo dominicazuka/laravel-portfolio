@@ -108,21 +108,35 @@ class AboutController extends Controller
     public function UpdateMultiImage(Request $request)
     {
         $multi_image_id = $request->id;
+
         if ($request->file('multi_image')) {
             $image = $request->file('multi_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();  // random generated name
             Image::make($image)->resize(220, 220)->save('upload/multi/' . $name_gen);
             $save_url = 'upload/multi/' . $name_gen;
-            MultiImage::findOrFail($multi_image_id)->update([
+
+            // Retrieve the existing multi-image data
+            $multiImage = MultiImage::findOrFail($multi_image_id);
+
+            // Delete the existing image on localhost
+            if (file_exists($multiImage->multi_image)) {
+                unlink($multiImage->multi_image);
+            }
+
+            // Update the multi-image data with the new image
+            $multiImage->update([
                 'multi_image' => $save_url,
             ]);
-            $notification = array(
+
+            $notification = [
                 'message' => 'Image Data Updated Successfully',
-                'alert-type' => 'success'
-            );
+                'alert-type' => 'success',
+            ];
+
             return redirect()->route('all.multi.image')->with($notification);
         }
-    } // end method
+    } //end method
+
 
     public function DeleteMultiImage($id)
     {
