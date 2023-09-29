@@ -4,8 +4,128 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Services;
+use Image;
+use Illuminate\Support\Carbon;
 
 class ServiceController extends Controller
 {
-    //
+    public function AllService()
+    {
+        $services = Services::latest()->get();
+        return view('admin.service.all_service', compact('services'));
+    } //end method
+
+    public function AddService()
+    {
+        return view('admin.service.add_service');
+    } //end method
+
+    public function StoreService(Request $request)
+    {
+        $request->validate([
+            'service_image' => 'required',
+            'service_icon' => 'required',
+            'service_title' => 'required',
+            'service_description' => 'required',
+        ], [
+            'service_image.required' => 'Service Image is required',
+            'service_icon.required' => 'Service icon is required',
+            'service_title.required' => 'Service title is required',
+            'service_description.required' => 'Service description is required',
+        ]);
+        $image = $request->file('service_image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension(); //generate random name
+        Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+        $save_url_image = 'upload/services/images/' . $name_gen;
+
+        $icon = $request->file('service_icon');
+        $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension(); //generate random name
+        Image::make($icon)->resize(86, 90)->save('upload/services/icons/' . $name_gen);
+        $save_url_icon = 'upload/services/icons/' . $name_gen;
+
+        Services::insert([
+            'service_image' => $save_url_image,
+            'service_icon' => $save_url_icon,
+            'service_title' => $request->service_title,
+            'service_description' => $request->service_description,
+            'created_at' => Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'Service Data Created Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.service')->with($notification);
+    } //end method
+
+    public function EditService($id)
+    {
+        $service = Services::findOrFail($id);
+        return view('admin.service.edit_service', compact('service'));
+    } //end method
+
+    public function UpdateService(Request $request)
+    {
+        $request->validate([
+            'service_title' => 'required',
+            'service_description' => 'required',
+        ], [
+            'service_title.required' => 'Service title is required',
+            'service_description.required' => 'Service description is required',
+        ]);
+
+        $service = Services::findOrFail($request->id); // Retrieve the existing service data
+
+        if ($request->file('service_image')) {
+            // Check if a new image is being uploaded
+            $image = $request->file('service_image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+            $save_url_image = 'upload/services/images/' . $name_gen;
+
+            // Check if a new icon is being uploaded
+            $icon = $request->file('service_icon');
+            $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
+            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
+            $save_url_icon = 'upload/services/icons/' . $name_gen;
+
+            // Delete the existing image on localhost
+            if (file_exists($service->service_image)) {
+                unlink($service->service_image);
+            }
+
+            // Delete the existing icon on localhost
+            if (file_exists($service->service_icon)) {
+                unlink($service->service_icon);
+            }
+
+            // Update the service data
+            $service->update([
+                'service_image' => $save_url_image,
+                'service_icon' => $save_url_icon,
+                'service_title' => $request->service_title,
+                'service_description' => $request->service_description,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = [
+                'message' => 'Service Data Updated with Image Successfully',
+                'alert-type' => 'success',
+            ];
+        } else {
+            // No new image and icon uploaded, update the portfolio data without changing the image
+            $service->update([
+                'service_title' => $request->service_title,
+                'service_description' => $request->service_description,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = [
+                'message' => 'Service Data Updated without Image Successfully',
+                'alert-type' => 'success',
+            ];
+        }
+
+        return redirect()->route('all.service')->with($notification);
+    } //end method
 }
