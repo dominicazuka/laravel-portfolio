@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,8 +91,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
         Route::post('/update/blog', 'UpdateBlog')->name('update.blog');
         Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
-        // Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
-        // Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+    });
+
+    //Service All Route
+    Route::controller(ServiceController::class)->group(function () {
+        Route::get('/all/service', 'AllService')->name('all.service');
+        Route::get('/add/service', 'AddService')->name('add.service');
+        Route::post('/store/service', 'StoreService')->name('store.service');
+        Route::get('/edit/service/{id}', 'EditService')->name('edit.service');
+        Route::post('/update/service', 'UpdateService')->name('update.service');
     });
 });
 
