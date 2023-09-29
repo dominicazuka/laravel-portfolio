@@ -76,33 +76,56 @@ class ServiceController extends Controller
 
         $service = Services::findOrFail($request->id); // Retrieve the existing service data
 
-        if ($request->file('service_image')) {
+        if ($request->file('service_icon') && $request->file('service_image')) {
+            // Check if a new icon is being uploaded
+            $icon = $request->file('service_icon');
+            $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
+            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
+            $save_url_icon = 'upload/services/icons/' . $name_gen;
+            // Delete the existing icon on localhost
+            if (file_exists($service->service_icon)) {
+                unlink($service->service_icon);
+            }
+
             // Check if a new image is being uploaded
             $image = $request->file('service_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
             $save_url_image = 'upload/services/images/' . $name_gen;
 
-            // Check if a new icon is being uploaded
-            $icon = $request->file('service_icon');
-            $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
-            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
-            $save_url_icon = 'upload/services/icons/' . $name_gen;
+            // Delete the existing image on localhost
+            if (file_exists($service->service_image)) {
+                unlink($service->service_image);
+            }
+
+            // Update the service data
+            $service->update([
+                'service_icon' => $save_url_icon,
+                'service_image' => $save_url_image,
+                'service_title' => $request->service_title,
+                'service_description' => $request->service_description,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = [
+                'message' => 'Service Data Updated with Image and Icon Successfully',
+                'alert-type' => 'success',
+            ];
+        } else if ($request->file('service_image')) {
+            // Check if a new image is being uploaded
+            $image = $request->file('service_image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+            $save_url_image = 'upload/services/images/' . $name_gen;
 
             // Delete the existing image on localhost
             if (file_exists($service->service_image)) {
                 unlink($service->service_image);
             }
 
-            // Delete the existing icon on localhost
-            if (file_exists($service->service_icon)) {
-                unlink($service->service_icon);
-            }
-
             // Update the service data
             $service->update([
                 'service_image' => $save_url_image,
-                'service_icon' => $save_url_icon,
                 'service_title' => $request->service_title,
                 'service_description' => $request->service_description,
                 'updated_at' => Carbon::now(),
@@ -112,8 +135,31 @@ class ServiceController extends Controller
                 'message' => 'Service Data Updated with Image Successfully',
                 'alert-type' => 'success',
             ];
+        } else if ($request->file('service_icon')) {
+            // Check if a new icon is being uploaded
+            $icon = $request->file('service_icon');
+            $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
+            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
+            $save_url_icon = 'upload/services/icons/' . $name_gen;
+            // Delete the existing icon on localhost
+            if (file_exists($service->service_icon)) {
+                unlink($service->service_icon);
+            }
+
+            // Update the service data
+            $service->update([
+                'service_icon' => $save_url_icon,
+                'service_title' => $request->service_title,
+                'service_description' => $request->service_description,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = [
+                'message' => 'Service Data Updated with Icon Successfully',
+                'alert-type' => 'success',
+            ];
         } else {
-            // No new image and icon uploaded, update the portfolio data without changing the image
+            // No new image and icon uploaded, update the service data without changing the image
             $service->update([
                 'service_title' => $request->service_title,
                 'service_description' => $request->service_description,
@@ -121,7 +167,7 @@ class ServiceController extends Controller
             ]);
 
             $notification = [
-                'message' => 'Service Data Updated without Image Successfully',
+                'message' => 'Service Data Updated without Image and Icon Successfully',
                 'alert-type' => 'success',
             ];
         }
