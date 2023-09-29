@@ -133,4 +133,12 @@ class BlogController extends Controller
         );
         return redirect()->back()->with($notification);
     } //end method
+
+    public function BlogDetails($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $allBlogs = Blog::latest()->limit(5)->get();
+        $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
+        return view('frontend.blog_details', compact('blog', 'allBlogs', 'categories'));
+    } //end method
 }
