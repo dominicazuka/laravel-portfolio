@@ -80,7 +80,7 @@ class ServiceController extends Controller
             // Check if a new icon is being uploaded
             $icon = $request->file('service_icon');
             $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
-            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
+            Image::make($icon)->resize(86, 90)->save('upload/services/icons/' . $name_gen);
             $save_url_icon = 'upload/services/icons/' . $name_gen;
             // Delete the existing icon on localhost
             if (file_exists($service->service_icon)) {
@@ -139,7 +139,7 @@ class ServiceController extends Controller
             // Check if a new icon is being uploaded
             $icon = $request->file('service_icon');
             $name_gen = hexdec(uniqid()) . '.' . $icon->getClientOriginalExtension();
-            Image::make($icon)->resize(320, 240)->save('upload/services/icons/' . $name_gen);
+            Image::make($icon)->resize(86, 90)->save('upload/services/icons/' . $name_gen);
             $save_url_icon = 'upload/services/icons/' . $name_gen;
             // Delete the existing icon on localhost
             if (file_exists($service->service_icon)) {
@@ -173,5 +173,26 @@ class ServiceController extends Controller
         }
 
         return redirect()->route('all.service')->with($notification);
+    } //end method
+
+    public function DeleteService($id)
+    {
+        $service = Services::findOrFail($id); //get service by id
+
+        //delete image on localhost
+        $img = $service->service_image;
+        unlink($img); //delete image from local storage
+
+        //delete icon on localhost
+        $icon = $service->service_icon;
+        unlink($icon); //delete icon from local storage
+
+        //delete data by id in DB
+        Services::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Service Data Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     } //end method
 }
