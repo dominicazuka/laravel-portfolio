@@ -21,17 +21,20 @@
                         <h2 class="title">Happy clients feedback</h2>
                     </div>
                     <div class="testimonial__active">
-                        <div class="testimonial__item">
-                            <div class="testimonial__icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <div class="testimonial__content">
-                                <p>{!! $allTestimonial->testimonial_description !!}</p>
-                                <div class="testimonial__avatar">
-                                    <span>{{ $allTestimonial->testimonial_name}}</span>
+                        @foreach ($allTestimonial as $item)
+                            <div class="testimonial__item">
+                                <div class="testimonial__icon">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial__content">
+                                    <p>{!! $item->testimonial_description !!}</p>
+                                    <div class="testimonial__avatar">
+                                        <span>{{ $item->testimonial_name }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
+
                     </div>
                     <div class="testimonial__arrow"></div>
                 </div>

@@ -10,9 +10,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-9">
                         <div class="blog__post__item">
                             <div class="blog__post__thumb">
-                                <a href="blog-details.html"><img src="{{ $item->blog_image }}" alt=""></a>
+                                <a href="{{ route('blog.details', $item->id) }}"><img src="{{ $item->blog_image }}" alt=""></a>
                                 <div class="blog__post__tags">
-                                    <a href="blog.html">{{ $item['category']['blog_category'] }}</a>
+                                    <a href="{{ route('category.blog', $item->blog_category_id) }}">{{ $item['category']['blog_category'] }}</a>
                                 </div>
                             </div>
                             <div class="blog__post__content">
