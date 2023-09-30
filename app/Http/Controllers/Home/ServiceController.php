@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Services;
 use Image;
 use Illuminate\Support\Carbon;
+use App\Models\Blog;
+use App\Models\BlogCategory;
 
 class ServiceController extends Controller
 {
@@ -195,4 +197,22 @@ class ServiceController extends Controller
         );
         return redirect()->back()->with($notification);
     } //end method
+
+    public function ServiceDetails($id)
+    {
+        $service = Services::findOrFail($id);
+        $allServices = Services::latest()->limit(5)->get();
+        $allBlogs = Blog::latest()->get();
+        $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
+        return view('frontend.service_details', compact('service', 'allServices', 'allBlogs', 'categories'));
+    } //end method
+
+    public function HomeServices()
+    {
+        $service = Services::latest()->get();
+        $allServices = Services::latest()->get();
+        $allBlogs = Blog::latest()->get();
+        $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
+        return view('frontend.service', compact('service', 'allServices', 'allBlogs', 'categories'));
+    }
 }

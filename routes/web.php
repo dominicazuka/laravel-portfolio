@@ -105,10 +105,12 @@ Route::middleware('auth')->group(function () {
 });
 
 // Routes accessible to all users (excluding auth middleware)
-Route::get('/about', [AboutController::class, 'homeAbout'])->name('home.about'); // User \view
-Route::get('/portfolio/details/{id}', [PortfolioController::class, 'portfolioDetails'])->name('portfolio.details'); // User view
+Route::get('/about', [AboutController::class, 'HomeAbout'])->name('home.about'); // User \view
+Route::get('/portfolio/details/{id}', [PortfolioController::class, 'PortfolioDetails'])->name('portfolio.details'); // User view
 Route::get('/blog/details/{id}', [BlogController::class, 'BlogDetails'])->name('blog.details'); // User view
 Route::get('/category/blog/{id}', [BlogController::class, 'CategoryBlog'])->name('category.blog'); // User view
 Route::get('/blog', [BlogController::class, 'HomeBlog'])->name('home.blog'); // User view
+Route::get('/service/details/{id}', [ServiceController::class, 'ServiceDetails'])->name('service.details'); // User view
+Route::get('/services', [ServiceController::class, 'HomeServices'])->name('home.services'); // User view
 
 require __DIR__ . '/auth.php';

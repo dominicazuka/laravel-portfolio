@@ -51,16 +51,6 @@
                                         </ul>
                                         <h2 class="title">{{ $blog->blog_title }}</h2>
                                         <p>{!! $blog->blog_description !!}</p>
-                                        <div class="services__details__img">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <img src="assets/img/blog/blog_details_img01.jpg" alt="">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <img src="assets/img/blog/blog_details_img02.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     {{--  Tags  --}}
                                     <div class="blog__details__bottom">
@@ -245,12 +235,13 @@
                                             @foreach ($allBlogs as $all)
                                                 <li class="rc__post__item">
                                                     <div class="rc__post__thumb">
-                                                        <a href="blog-details.html"><img
+                                                        <a href="{{ route('blog.details', $all->id) }}"><img
                                                                 src="{{ asset($all->blog_image) }}" alt=""></a>
                                                     </div>
                                                     <div class="rc__post__content">
                                                         <h5 class="title"><a
-                                                                href="blog-details.html">{{ $all->blog_title }}</a></h5>
+                                                                href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
+                                                        </h5>
                                                         <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                             {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>
                                                     </div>

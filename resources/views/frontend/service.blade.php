@@ -9,7 +9,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10">
                         <div class="breadcrumb__wrap__content">
-                            <h2 class="title">All Blogs</h2>
+                            <h2 class="title">All Services</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -40,30 +40,25 @@
                 <div class="row">
                     {{--  main content  --}}
                     <div class="col-lg-8">
-                        @foreach ($allBlogs as $item)
+                        @foreach ($allServices as $item)
                             <div class="standard__blog__post">
                                 <div class="standard__blog__thumb">
-                                    <a href="{{ route('blog.details', $item->id) }}"><img
-                                            src="{{ asset($item->blog_image) }}" alt=""></a>
-                                    <a href="{{ route('blog.details', $item->id) }}" class="blog__link"><i
+                                    <a href="{{ route('service.details', $item->id) }}"><img
+                                            src="{{ asset($item->service_image) }}" alt=""></a>
+                                    <a href="{{ route('service.details', $item->id) }}" class="blog__link"><i
                                             class="far fa-long-arrow-right"></i></a>
                                 </div>
                                 <div class="standard__blog__content">
                                     <div class="blog__post__avatar">
-                                        <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
-                                        <span class="post__by">By : <a href="#">Halina Spond</a></span>
+                                        <div class="thumb"><img src="{{ asset($item->service_icon) }}" alt="">
+                                        </div>
                                     </div>
                                     <h2 class="title"><a
-                                            href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a></h2>
+                                            href="{{ route('service.details', $item->id) }}">{{ $item->service_title }}</a>
+                                    </h2>
                                     <p>
-                                        {!! Str::limit($item->blog_description, 200) !!}
+                                        {!! Str::limit($item->service_description, 200) !!}
                                     </p>
-                                    <ul class="blog__post__meta">
-                                        <li><i class="fal fa-calendar-alt"></i>
-                                            {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</li>
-                                        {{--  <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
-                                            <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>  --}}
-                                    </ul>
                                 </div>
                             </div>
                         @endforeach
@@ -87,12 +82,6 @@
                     {{--  SideBar  --}}
                     <div class="col-lg-4">
                         <aside class="blog__sidebar">
-                            <div class="widget">
-                                <form action="#" class="search-form">
-                                    <input type="text" placeholder="Search">
-                                    <button type="submit"><i class="fal fa-search"></i></button>
-                                </form>
-                            </div>
                             {{--  Recent Blog  --}}
                             <div class="widget">
                                 <h4 class="widget-title">Recent Blog</h4>
@@ -123,49 +112,6 @@
                                                 href="{{ route('category.blog', $cat->id) }}">{{ $cat->blog_category }}</a>
                                         </li>
                                     @endforeach
-                                </ul>
-                            </div>
-                            {{--  Comments  --}}
-                            <div class="widget">
-                                <h4 class="widget-title">Recent Comment</h4>
-                                <ul class="sidebar__comment">
-                                    <li class="sidebar__comment__item">
-                                        <a href="blog-details.html">Rasalina Sponde</a>
-                                        <p>There are many variations of passages of lorem ipsum available, but the majority
-                                            have</p>
-                                    </li>
-                                    <li class="sidebar__comment__item">
-                                        <a href="blog-details.html">Rasalina Sponde</a>
-                                        <p>There are many variations of passages of lorem ipsum available, but the majority
-                                            have</p>
-                                    </li>
-                                    <li class="sidebar__comment__item">
-                                        <a href="blog-details.html">Rasalina Sponde</a>
-                                        <p>There are many variations of passages of lorem ipsum available, but the majority
-                                            have</p>
-                                    </li>
-                                    <li class="sidebar__comment__item">
-                                        <a href="blog-details.html">Rasalina Sponde</a>
-                                        <p>There are many variations of passages of lorem ipsum available, but the majority
-                                            have</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            {{--  Popular Tags  --}}
-                            <div class="widget">
-                                <h4 class="widget-title">Popular Tags</h4>
-                                <ul class="sidebar__tags">
-                                    <li><a href="blog.html">Business</a></li>
-                                    <li><a href="blog.html">Design</a></li>
-                                    <li><a href="blog.html">apps</a></li>
-                                    <li><a href="blog.html">landing page</a></li>
-                                    <li><a href="blog.html">data</a></li>
-                                    <li><a href="blog.html">website</a></li>
-                                    <li><a href="blog.html">book</a></li>
-                                    <li><a href="blog.html">Design</a></li>
-                                    <li><a href="blog.html">product design</a></li>
-                                    <li><a href="blog.html">landing page</a></li>
-                                    <li><a href="blog.html">data</a></li>
                                 </ul>
                             </div>
                         </aside>
