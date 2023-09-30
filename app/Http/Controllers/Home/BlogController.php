@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use Image;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use App\Models\MultiImage;
 
 class BlogController extends Controller
 {
@@ -139,7 +140,8 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $allBlogs = Blog::latest()->limit(5)->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
-        return view('frontend.blog_details', compact('blog', 'allBlogs', 'categories'));
+        $icons = MultiImage::all();
+        return view('frontend.blog_details', compact('blog', 'allBlogs', 'categories', 'icons'));
     } //end method
 
     public function CategoryBlog($id)
@@ -148,19 +150,21 @@ class BlogController extends Controller
         $allBlogs = Blog::latest()->limit(5)->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
         $categoryName = BlogCategory::findOrFail($id);
+        $icons = MultiImage::all();
         // Log the data - equivalent to console.log() in js
         // \Log::info([
         //     'blogPost' => $blogPost,
         //     'allBlogs' => $allBlogs,
         //     'categories' => $categories,
         // ]);
-        return view('frontend.cat_blog_details', compact('blogPost', 'allBlogs', 'categories', 'categoryName'));
+        return view('frontend.cat_blog_details', compact('blogPost', 'allBlogs', 'categories', 'categoryName', 'icons'));
     } //end method
 
     public function HomeBlog()
     {
         $allBlogs = Blog::latest()->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
-        return view('frontend.blog', compact('allBlogs', 'categories'));
+        $icons = MultiImage::all();
+        return view('frontend.blog', compact('allBlogs', 'categories', 'icons'));
     }
 }

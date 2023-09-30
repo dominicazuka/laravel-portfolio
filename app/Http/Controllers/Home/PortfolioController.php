@@ -7,6 +7,7 @@ use Image;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\MultiImage;
 
 class PortfolioController extends Controller
 {
@@ -168,6 +169,14 @@ class PortfolioController extends Controller
     public function PortfolioDetails($id)
     {
         $portfolio = Portfolio::findOrFail($id);
-        return view('frontend.portfolio_details', compact('portfolio'));
+        $icons = MultiImage::all();
+        return view('frontend.portfolio_details', compact('portfolio', 'icons'));
     } //end method
+
+    public function HomePortfolio()
+    {
+        $portfolio = Portfolio::latest()->get();
+        $icons = MultiImage::all();
+        return view('frontend.portfolio', compact('portfolio', 'icons'));
+    }
 }

@@ -8,19 +8,19 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Add About Multi-Image</h4>
+                            <h4 class="card-title">Add Partner Multi-Image</h4>
                             <br />
                             <br />
-                            <form method="post" action="{{ route('store.multi.image') }}" enctype="multipart/form-data"
-                                id="multiImageForm">
+                            <form method="post" action="{{ route('store.partner.multi.image') }}"
+                                enctype="multipart/form-data" id="multiImageForm">
                                 @csrf
 
                                 {{-- multi image --}}
                                 <div class="row mb-3">
-                                    <label for="multi_image" class="col-sm-2 col-form-label">About Multi Image</label>
+                                    <label for="multi_image" class="col-sm-2 col-form-label">Partner Multi Image</label>
                                     <div class="col-sm-10">
                                         <input name="multi_image[]" class="form-control" type="file" id="image"
-                                            multiple="" accept=".jpg, .jpeg,  .png, .gif, .webp">
+                                            multiple="" accept=".jpg, .png, .gif, .webp">
                                         {{--  <!-- Display client error message -->  --}}
                                         <div id="fileError" class="text-danger"></div>
                                         @error('multi_image')
@@ -71,7 +71,7 @@
                     }
 
                     // Check file size
-                    if (selectedFile.size > 2097152) { // 2MB in bytes
+                    if (selectedFile.size > 2048000) { // 2MB in bytes
                         e.preventDefault(); // Prevent form submission
                         $('#fileError').text('Images size cannot exceed 2MB');
                     }

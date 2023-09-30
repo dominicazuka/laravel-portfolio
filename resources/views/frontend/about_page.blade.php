@@ -22,12 +22,9 @@
             </div>
             <div class="breadcrumb__wrap__icon">
                 <ul>
-                    <li><img src="{{ asset('frontend/assets/img/icons/amazon.png') }}" alt=""></li>
-                    <li><img src="{{ asset('frontend/assets/img/icons/javascript-logo.png') }}" alt=""></li>
-                    <li><img src="{{ asset('frontend/assets/img/icons/expressjsIcon.svg') }}" alt=""></li>
-                    <li><img src="{{ asset('frontend/assets/img/icons/nextjsIcon.svg') }}" alt=""></li>
-                    <li><img src="{{ asset('frontend/assets/img/icons/reduxIcon.svg') }}" alt=""></li>
-                    <li><img src="{{ asset('frontend/assets/img/icons/sassIcon.svg') }}" alt=""></li>
+                    @foreach ($icons as $icon)
+                        <li><img src="{{ asset($icon->multi_image) }}" alt=""></li>
+                    @endforeach
                 </ul>
             </div>
         </section>

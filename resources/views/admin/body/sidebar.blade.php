@@ -81,6 +81,29 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Partners Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('partner.page') }}">Partners Page</a></li>
+                        <li><a href="{{ route('partner.multi.image') }}">Partners Multi Image</a></li>
+                        <li><a href="{{ route('all.partner.multi.image') }}">All Partners Multi Image</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Testimonial Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('all.testimonial') }}">All Testimonial</a></li>
+                        <li><a href="{{ route('add.testimonial') }}">Add Testimonial</a></li>
+                    </ul>
+                </li>
+
                 <li class="menu-title">Pages</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

@@ -8,6 +8,8 @@ use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\ServiceController;
+use App\Http\Controllers\Home\PartnerController;
+use App\Http\Controllers\Home\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,10 +104,33 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/service', 'UpdateService')->name('update.service');
         Route::get('/delete/service/{id}', 'DeleteService')->name('delete.service');
     });
+
+    //Partner All Route
+    Route::controller(PartnerController::class)->group(function () {
+        Route::get('/partner/Page', 'PartnerPage')->name('partner.page');
+        Route::post('/update/partner', 'UpdatePartner')->name('update.partner');
+        Route::get('/partner/multi', 'PartnerMultiImage')->name('partner.multi.image');
+        Route::post('/partner/store/multi/image', 'StorePartnerMultiImage')->name('store.partner.multi.image');
+        Route::get('/all/partner/multi/image', 'AllPartnerMultiImage')->name('all.partner.multi.image');
+        Route::get('/edit/partner/multi/image/{id}', 'EditPartnerMultiImage')->name('edit.partner.multi.image');
+        Route::post('/update/partner/multi/image', 'UpdatePartnerMultiImage')->name('update.partner.multi.image');
+        Route::get('/delete/partner/multi/image/{id}', 'DeletePartnerMultiImage')->name('delete.partner.multi.image');
+    });
+
+    //Testimonial All Route
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('/all/testimonial', 'AllTestimonial')->name('all.testimonial');
+        Route::get('/add/testimonial', 'AddTestimonial')->name('add.testimonial');
+        Route::post('/store/testimonial', 'StoreTestimonial')->name('store.testimonial');
+        Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
+        Route::post('/update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
+        Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
+    });
 });
 
 // Routes accessible to all users (excluding auth middleware)
-Route::get('/about', [AboutController::class, 'HomeAbout'])->name('home.about'); // User \view
+Route::get('/about', [AboutController::class, 'HomeAbout'])->name('home.about'); // User view
+Route::get('/portfolio', [PortfolioController::class, 'HomePortfolio'])->name('home.portfolio'); // User view
 Route::get('/portfolio/details/{id}', [PortfolioController::class, 'PortfolioDetails'])->name('portfolio.details'); // User view
 Route::get('/blog/details/{id}', [BlogController::class, 'BlogDetails'])->name('blog.details'); // User view
 Route::get('/category/blog/{id}', [BlogController::class, 'CategoryBlog'])->name('category.blog'); // User view

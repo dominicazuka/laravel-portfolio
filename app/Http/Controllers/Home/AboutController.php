@@ -55,7 +55,8 @@ class AboutController extends Controller
     public function HomeAbout()
     {
         $aboutpage = About::find(1);
-        return view('frontend.about_page', compact('aboutpage'));
+        $icons = MultiImage::all();
+        return view('frontend.about_page', compact('aboutpage', 'icons'));
     } //end method
 
     public function AboutMultiImage()
@@ -65,6 +66,12 @@ class AboutController extends Controller
 
     public function StoreMultiImage(Request $request)
     {
+        $request->validate([
+            'multi_image' => 'required|max:2048', // Define image validation rules here
+        ], [
+            'multi_image.required' => 'An image is required',
+            'multi_image.max' => 'Image size cannot exceed 2MB',
+        ]);
 
         $image = $request->file('multi_image');
 
@@ -72,7 +79,7 @@ class AboutController extends Controller
 
             $name_gen = hexdec(uniqid()) . '.' . $multi_image->getClientOriginalExtension();  // random generated name
 
-            Image::make($multi_image)->resize(220, 220)->save('upload/multi/' . $name_gen);
+            Image::make($multi_image)->resize(124, 124)->save('upload/multi/' . $name_gen);
             $save_url = 'upload/multi/' . $name_gen;
 
             MultiImage::insert([
@@ -107,13 +114,18 @@ class AboutController extends Controller
 
     public function UpdateMultiImage(Request $request)
     {
+        $request->validate([
+            'multi_image' => 'required',
+        ], [
+            'multi_image.required' => 'About image is required',
+        ]);
         $multi_image_id = $request->id;
 
         if ($request->file('multi_image')) {
             $image = $request->file('multi_image');
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();  // random generated name
-            Image::make($image)->resize(220, 220)->save('upload/multi/' . $name_gen);
-            $save_url = 'upload/multi/' . $name_gen;
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // random generated name
+            Image::make($image)->resize(124, 124)->save('upload/multi/' . $name_gen);
+            $save_url = 'upload/multi/'.$name_gen;
 
             // Retrieve the existing multi-image data
             $multiImage = MultiImage::findOrFail($multi_image_id);

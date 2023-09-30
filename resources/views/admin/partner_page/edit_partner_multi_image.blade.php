@@ -8,15 +8,16 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Update Image</h4>
+                            <h4 class="card-title">Update Partner Image</h4>
                             <br />
                             <br />
-                            <form method="post" action="{{ route('update.multi.image') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('update.partner.multi.image') }}"
+                                enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $multiImage->id }}" />
-                                {{-- multi image --}}
+                                <input type="hidden" name="id" value="{{ $partnerMultiImage->id }}" />
+                                {{-- multi_image --}}
                                 <div class="row mb-3">
-                                    <label for="multi_image" class="col-sm-2 col-form-label">About Multi Image</label>
+                                    <label for="multi_image" class="col-sm-2 col-form-label">Partner Multi Image</label>
                                     <div class="col-sm-10">
                                         <input name="multi_image" class="form-control" type="file" id="image">
                                         @error('multi_image')
@@ -30,7 +31,7 @@
                                     <label for="display_multi_image" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10" id="imagePreviewContainer">
                                         <img class="rounded avatar-lg" id="showImage"
-                                            src="{{ asset($multiImage->multi_image) }}" alt="Update Multi Image">
+                                            src="{{ asset($partnerMultiImage->multi_image) }}" alt="Update Multi Image">
                                     </div>
                                 </div>
 

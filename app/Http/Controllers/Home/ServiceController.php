@@ -9,6 +9,7 @@ use Image;
 use Illuminate\Support\Carbon;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\MultiImage;
 
 class ServiceController extends Controller
 {
@@ -204,7 +205,8 @@ class ServiceController extends Controller
         $allServices = Services::latest()->limit(5)->get();
         $allBlogs = Blog::latest()->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
-        return view('frontend.service_details', compact('service', 'allServices', 'allBlogs', 'categories'));
+        $icons = MultiImage::all();
+        return view('frontend.service_details', compact('service', 'allServices', 'allBlogs', 'categories', 'icons'));
     } //end method
 
     public function HomeServices()
@@ -213,6 +215,7 @@ class ServiceController extends Controller
         $allServices = Services::latest()->get();
         $allBlogs = Blog::latest()->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
-        return view('frontend.service', compact('service', 'allServices', 'allBlogs', 'categories'));
+        $icons = MultiImage::all();
+        return view('frontend.service', compact('service', 'allServices', 'allBlogs', 'categories', 'icons'));
     }
 }
