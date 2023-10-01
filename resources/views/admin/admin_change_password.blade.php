@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'Change Password - Admin | Dominic Azuka Portfolio')
+@section('description', 'Change your password in the admin section of Dominic Azuka Portfolio.')
+@section('og_description', 'Change your password in the admin section of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Change your password in the admin section of Dominic Azuka Portfolio.')
+
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">

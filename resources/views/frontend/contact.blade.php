@@ -1,10 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
 
-{{--  Page title  --}}
-@section('title')
-Contact - Software Engineer | Full Stack Developer
-@endsection
+@section('title', 'Contact - Software Engineer | Full Stack Developer')
+@section('description', 'Contact Dominic Azuka, a Software Engineer and Full Stack Developer, with your project ideas or general inquiries.')
+@section('og_description', 'Reach out to Dominic Azuka, a Software Engineer and Full Stack Developer, with your questions, ideas, or inquiries.')
+@section('twitter_description', 'Connect with Dominic Azuka, a Software Engineer and Full Stack Developer, and share your thoughts or project ideas.')
 
     <main>
 

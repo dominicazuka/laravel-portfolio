@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'Edit '.$service->service_title.' Service - Admin | Dominic Azuka Portfolio')
+@section('description', 'Edit a service in the admin section of Dominic Azuka Portfolio.')
+@section('og_description', 'Edit a service in the admin section of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Edit a service in the admin section of Dominic Azuka Portfolio.')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div class="page-content">

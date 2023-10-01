@@ -1,12 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
 
-
-{{--  Page title  --}}
-@section('title')
-Blog - Software Engineer | Full Stack Developer
-@endsection
-
+@section('title', 'Blog - Software Engineer | Full Stack Developer')
+@section('description', 'Explore Dominic Azuka\'s blog, featuring articles on software development, coding tips, and industry insights.')
+@section('og_description', 'Discover a collection of insightful blog articles by Dominic Azuka, a Software Engineer and Full Stack Developer.')
+@section('twitter_description', 'Explore the latest blog posts by Dominic Azuka, a Software Engineer and Full Stack Developer, covering software development topics.')
 
     <!-- main-area -->
     <main>

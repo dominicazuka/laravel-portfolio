@@ -1,10 +1,15 @@
         @extends('frontend.main_master')
         @section('main')
 
-        {{--  Page title  --}}
-@section('title')
-Blog - Software Engineer | Full Stack Developer
-@endsection
+
+        @section('title', $blog->blog_title)
+        @section('description', 'Read the detailed blog post titled "Blog Post Title" by Dominic Azuka, a Software
+            Engineer and Full Stack Developer.')
+        @section('og_description', 'Dive into the blog post titled "Blog Post Title" by Dominic Azuka, a Software
+            Engineer and Full Stack Developer, and explore the insights shared.')
+        @section('twitter_description', 'Explore the in-depth blog post titled "Blog Post Title" by Dominic Azuka, a
+            Software Engineer and Full Stack Developer.')
+
 
             {{--  <!-- main-area -->  --}}
             <main>
@@ -326,12 +331,15 @@ Blog - Software Engineer | Full Stack Developer
                                     </div>
                                     <div class="homeContact__content">
                                         <p>You can always reach out to me with any project idea or general enquiry</p>
-                                <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
+                                        <h2 class="mail"><a
+                                                href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a>
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="homeContact__form">
-                                        <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                        <form method="post" action="{{ route('store.message') }}"
+                                            class="sidebar__contact">
                                             @csrf
                                             @error('name')
                                                 <span class="text-danger">{{ $message }}</span>

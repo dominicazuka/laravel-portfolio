@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'Add Portfolio - Admin | Dominic Azuka Portfolio')
+@section('description', 'Add a new portfolio item in the admin section of Dominic Azuka Portfolio.')
+@section('og_description', 'Add a new portfolio item in the admin section of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Add a new portfolio item in the admin section of Dominic Azuka Portfolio.')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     {{-- Date Picker Bootstrap 4 --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />

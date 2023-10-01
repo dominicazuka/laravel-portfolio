@@ -1,11 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
 
-{{--  Page title  --}}
-@section('title')
-Portfolio - Software Engineer | Full Stack Developer
-@endsection
-
+@section('title', 'Portfolio - Software Engineer | Full Stack Developer')
+@section('description', 'View Dominic Azuka\'s portfolio, showcasing projects in software development, design, and more.')
+@section('og_description', 'Explore the diverse portfolio of Dominic Azuka, a Software Engineer and Full Stack Developer, featuring projects and designs.')
+@section('twitter_description', 'Discover Dominic Azuka\'s portfolio, displaying a range of projects in software development and design.')
 
     <main>
         <!-- breadcrumb-area -->

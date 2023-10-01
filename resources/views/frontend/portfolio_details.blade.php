@@ -4,10 +4,10 @@
         $allFooter = App\Models\Footer::find(1);
     @endphp
 
-    {{--  Page title  --}}
-@section('title')
-Portfolio - Software Engineer | Full Stack Developer
-@endsection
+@section('title', $portfolio->portfolio_name . ' Portfolio - Software Engineer | Full Stack Developer')
+@section('description', 'Explore the detailed project portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, a Software Engineer and Full Stack Developer.')
+@section('og_description', 'Dive into the detailed portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, showcasing skills in software development and design.')
+@section('twitter_description', 'Discover the comprehensive portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, highlighting software development expertise.')
 
     <!-- main-area -->
     <main>

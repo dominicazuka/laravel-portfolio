@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title')</title>
     <meta name="title" content="@yield('title', 'Dominic Azuka - Software Engineer | Full Stack Developer')" />
+    <meta content="Dominic Azuka" name="author" />
 
     <!-- Primary Meta Tags -->
     <meta name="description" content="@yield('description', 'Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM')" />
@@ -27,7 +28,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.ico') }}">
-    <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">

@@ -13,9 +13,9 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img
+                                <a href="{{ route('home') }}" class="logo__black"><img
                                         src="{{ asset('frontend/assets/img/logo/logo-dark.png') }}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img
+                                <a href="{{ route('home') }}" class="logo__white"><img
                                         src="{{ asset('frontend/assets/img/logo/logo-light.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">

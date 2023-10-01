@@ -2,12 +2,30 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8" />
-    <title>Portfolio - Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+    <!-- Admin Section Meta Tags -->
+    <title>@yield('title', 'Admin - Dominic Azuka Portfolio')</title>
+    <meta name="title" content="@yield('title', 'Admin - Dominic Azuka Portfolio')" />
+    <meta content="Dominic Azuka" name="author" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="@yield('description', 'Admin Section of Dominic Azuka Portfolio')" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@yield('og_url', url()->current())" />
+    <meta property="og:title" content="@yield('og_title', 'Admin - Dominic Azuka Portfolio')" />
+    <meta property="og:description" content="@yield('og_description', 'Admin Section of Dominic Azuka Portfolio')" />
+    <meta property="og:image" content="@yield('og_image', 'https://i.ibb.co/qD14wW7/DSC-2396-1.png')" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="@yield('twitter_url', url()->current())" />
+    <meta property="twitter:title" content="@yield('twitter_title', 'Admin - Dominic Azuka Portfolio')" />
+    <meta property="twitter:description" content="@yield('twitter_description', 'Admin Section of Dominic Azuka Portfolio')" />
+    <meta property="twitter:image" content="@yield('twitter_image', 'https://i.ibb.co/qD14wW7/DSC-2396-1.png')" />
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 

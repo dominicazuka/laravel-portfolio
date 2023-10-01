@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'About Section Images - Admin | Dominic Azuka Portfolio')
+@section('description', 'Edit multi images in the About section on the home page of Dominic Azuka Portfolio.')
+@section('og_description', 'Edit multi images in the About section on the home page of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Edit multi images in the About section on the home page of Dominic Azuka Portfolio.')
+
 
 <div class="page-content">
     <div class="container-fluid">

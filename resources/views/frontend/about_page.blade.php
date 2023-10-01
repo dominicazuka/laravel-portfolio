@@ -8,10 +8,11 @@
             ->get(); //gets 3 latest post
     @endphp
 
-    {{--  Page title  --}}
-@section('title')
-About - Software Engineer | Full Stack Developer
-@endsection
+@section('title', 'About - Software Engineer | Full Stack Developer')
+@section('description', 'Learn more about Dominic Azuka, a Software Engineer and Full Stack Developer, specializing in JavaScript (MERN stack) development and much more.')
+@section('og_description', 'Get to know Dominic Azuka, a Software Engineer and Full Stack Developer, through his journey in software development, coding tips, and more.')
+@section('twitter_description', 'Explore the story of Dominic Azuka, a Software Engineer and Full Stack Developer, and discover his passion for coding, design, and development.')
+
     <!-- main-area -->
     <main>
 

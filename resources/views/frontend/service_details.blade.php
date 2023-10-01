@@ -1,10 +1,10 @@
         @extends('frontend.main_master')
         @section('main')
 
-        {{--  Page title  --}}
-@section('title')
-Services - Software Engineer | Full Stack Developer
-@endsection
+@section('title', $service->service_title . ' Service - Software Engineer | Full Stack Developer')
+@section('description', 'Learn about the detailed services offered by Dominic Azuka, a Software Engineer and Full Stack Developer.')
+@section('og_description', 'Explore the comprehensive services provided by Dominic Azuka, a Software Engineer and Full Stack Developer.')
+@section('twitter_description', 'Discover the range of services offered by Dominic Azuka, a Software Engineer and Full Stack Developer.')
 
             {{--  <!-- main-area -->  --}}
             <main>

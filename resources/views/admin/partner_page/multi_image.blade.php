@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'Upload Partner Images - Admin | Dominic Azuka Portfolio')
+@section('description', 'Upload partner multi images sitewide in the admin section of Dominic Azuka Portfolio.')
+@section('og_description', 'Upload partner multi images sitewide in the admin section of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Upload partner multi images sitewide in the admin section of Dominic Azuka Portfolio.')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="page-content">
         <div class="container-fluid">

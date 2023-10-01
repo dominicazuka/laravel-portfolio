@@ -1,10 +1,11 @@
 @extends('frontend.main_master')
 @section('main')
 
-{{--  Page title  --}}
-@section('title')
-Blog - Software Engineer | Full Stack Developer
-@endsection
+@section('title', $categoryName->blog_category . ' Category - Software Engineer | Full Stack Developer')
+@section('description', 'Browse blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, covering various software development topics.')
+@section('og_description', 'Explore blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, sharing knowledge about software development.')
+@section('twitter_description', 'Discover blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, focused on software development.')
+
     <!-- main-area -->
     <main>
 

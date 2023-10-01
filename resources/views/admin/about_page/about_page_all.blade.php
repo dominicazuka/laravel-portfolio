@@ -1,5 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@section('title', 'About Section - Admin | Dominic Azuka Portfolio')
+@section('description', 'Edit details in the About section on the home page of Dominic Azuka Portfolio.')
+@section('og_description', 'Edit details in the About section on the home page of Dominic Azuka Portfolio.')
+@section('twitter_description', 'Edit details in the About section on the home page of Dominic Azuka Portfolio.')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="page-content">
         <div class="container-fluid">
