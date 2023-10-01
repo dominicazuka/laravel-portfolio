@@ -129,19 +129,36 @@
                                         <h2 class="title">Any questions? Feel free <br> to contact</h2>
                                     </div>
                                     <div class="homeContact__content">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                            have suffered alteration in some form</p>
-                                        <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
+                                        <p>You can always reach out to me with any project idea or general enquiry</p>
+                                <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="homeContact__form">
-                                        <form action="#">
-                                            <input type="text" placeholder="Enter name*">
-                                            <input type="email" placeholder="Enter mail*">
-                                            <input type="number" placeholder="Enter number*">
-                                            <textarea name="message" placeholder="Enter Massage*"></textarea>
-                                            <button type="submit">Send Message</button>
+                                        <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                            @csrf
+                                            <input name="name" type="text" placeholder="Enter name*">
+                                            @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <input name="email" type="email" placeholder="Enter your mail*">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <input name="subject" type="text" placeholder="Enter your subject*">
+                                            @error('subject')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <input name="phone" type="text" placeholder="Your Phone*">
+                                            @error('phone')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+                                            <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                            @error('message')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <button type="submit" class="btn">send message</button>
                                         </form>
                                     </div>
                                 </div>

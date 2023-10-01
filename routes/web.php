@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\ServiceController;
 use App\Http\Controllers\Home\PartnerController;
 use App\Http\Controllers\Home\TestimonialController;
@@ -132,11 +133,12 @@ Route::middleware('auth')->group(function () {
     Route::controller(FooterController::class)->group(function () {
         Route::get('/footer/setup', 'FooterSetup')->name('footer.setup');
         Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
-        // Route::get('/add/testimonial', 'AddTestimonial')->name('add.testimonial');
-        // Route::post('/store/testimonial', 'StoreTestimonial')->name('store.testimonial');
-        // Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
-        // Route::post('/update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
-        // Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
+    });
+
+    //Contact All Route
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('/contact/message', 'ContactMessage')->name('contact.message');
+        Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
     });
 });
 
@@ -149,5 +151,7 @@ Route::get('/category/blog/{id}', [BlogController::class, 'CategoryBlog'])->name
 Route::get('/blog', [BlogController::class, 'HomeBlog'])->name('home.blog'); // User view
 Route::get('/service/details/{id}', [ServiceController::class, 'ServiceDetails'])->name('service.details'); // User view
 Route::get('/services', [ServiceController::class, 'HomeServices'])->name('home.services'); // User view
+Route::get('/contact', [ContactController::class, 'Contact'])->name('contact.me'); // User view
+Route::post('/store/message', [ContactController::class, 'StoreMessage'])->name('store.message'); // User view
 
 require __DIR__ . '/auth.php';

@@ -1,5 +1,9 @@
 @extends('frontend.main_master')
 @section('main')
+    @php
+        $allFooter = App\Models\Footer::find(1);
+    @endphp
+
     <!-- main-area -->
     <main>
 
@@ -48,11 +52,30 @@
                         <aside class="services__sidebar">
                             <div class="widget">
                                 <h5 class="title">Get in Touch</h5>
-                                <form action="#" class="sidebar__contact">
-                                    <input type="text" placeholder="Enter name*">
-                                    <input type="email" placeholder="Enter your mail*">
-                                    <textarea name="message" id="message" placeholder="Massage*"></textarea>
-                                    <button type="submit" class="btn">send massage</button>
+                                <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                    @csrf
+                                    <input name="name" type="text" placeholder="Enter name*">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="email" type="email" placeholder="Enter your mail*">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="subject" type="text" placeholder="Enter your subject*">
+                                    @error('subject')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="phone" type="text" placeholder="Your Phone*">
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    @error('message')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <button type="submit" class="btn">send message</button>
                                 </form>
                             </div>
                             <div class="widget">
@@ -69,18 +92,23 @@
                             <div class="widget">
                                 <h5 class="title">Contact Information</h5>
                                 <ul class="sidebar__contact__info">
-                                    <li><span>Address :</span> 8638 Amarica Stranfod, <br> Mailbon Star</li>
-                                    <li><span>Mail :</span> yourmail@gmail.com</li>
-                                    <li><span>Phone :</span> +7464 0187 3535 645</li>
-                                    <li><span>Fax id :</span> +9 659459 49594</li>
+                                    <li><span>Address :</span>{{ $allFooter->address }}</li>
+                                    <li><span>Mail :</span> {{ $allFooter->email }}</li>
+                                    <li><span>Phone :</span>{{ $allFooter->number }}</li>
                                 </ul>
                                 <ul class="sidebar__contact__social">
-                                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li><a href="{{ $allFooter->facebook }}" target="_blank"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ $allFooter->twitter }}" target="_blank"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ $allFooter->linkedin }}" target="_blank"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $allFooter->instagram }}" target="_blank"><i
+                                                class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{ $allFooter->github }}" target="_blank"><i
+                                                class="fab fa-github"></i></a></li>
+                                    <li><a href="{{ $allFooter->youtube }}" target="_blank"><i
+                                                class="fab fa-youtube"></i></a></li>
                                 </ul>
                             </div>
                         </aside>
@@ -102,19 +130,36 @@
                                 <h2 class="title">Any questions? Feel free <br> to contact</h2>
                             </div>
                             <div class="homeContact__content">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                    suffered alteration in some form</p>
-                                <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
+                                <p>You can always reach out to me with any project idea or general enquiry</p>
+                                <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="homeContact__form">
-                                <form action="#">
-                                    <input type="text" placeholder="Enter name*">
-                                    <input type="email" placeholder="Enter mail*">
-                                    <input type="number" placeholder="Enter number*">
-                                    <textarea name="message" placeholder="Enter Massage*"></textarea>
-                                    <button type="submit">Send Message</button>
+                                <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                    @csrf
+                                    <input name="name" type="text" placeholder="Enter name*">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="email" type="email" placeholder="Enter your mail*">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="subject" type="text" placeholder="Enter your subject*">
+                                    @error('subject')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <input name="phone" type="text" placeholder="Your Phone*">
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    @error('message')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <button type="submit" class="btn">send message</button>
                                 </form>
                             </div>
                         </div>

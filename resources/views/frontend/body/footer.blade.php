@@ -9,7 +9,7 @@
                 <div class="footer__widget">
                     <div class="fw-title">
                         <h5 class="sub-title">Contact</h5>
-                        <h4 class="title">+{{ $allFooter->number }}</h4>
+                        <h4 class="title">{{ $allFooter->number }}</h4>
                     </div>
                     <div class="footer__widget__text">
                         <p>{!! $allFooter->short_description !!}</p>

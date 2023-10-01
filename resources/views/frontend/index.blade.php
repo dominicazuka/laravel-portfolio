@@ -125,12 +125,30 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="homeContact__form">
-                            <form action="#">
-                                <input type="text" placeholder="Enter name*">
-                                <input type="email" placeholder="Enter mail*">
-                                <input type="number" placeholder="Enter number*">
-                                <textarea name="message" placeholder="Enter Massage*"></textarea>
-                                <button type="submit">Send Message</button>
+                            <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                @csrf
+                                <input name="name" type="text" placeholder="Enter name*">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input name="email" type="email" placeholder="Enter your mail*">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input name="subject" type="text" placeholder="Enter your subject*">
+                                @error('subject')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <input name="phone" type="text" placeholder="Your Phone*">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                                <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                @error('message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <button type="submit" class="btn">send message</button>
                             </form>
                         </div>
                     </div>
