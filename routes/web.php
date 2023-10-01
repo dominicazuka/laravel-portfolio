@@ -10,6 +10,7 @@ use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\ServiceController;
 use App\Http\Controllers\Home\PartnerController;
 use App\Http\Controllers\Home\TestimonialController;
+use App\Http\Controllers\Home\FooterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -125,6 +126,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
         Route::post('/update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
         Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
+    });
+
+    //Footer All Route
+    Route::controller(FooterController::class)->group(function () {
+        Route::get('/footer/setup', 'FooterSetup')->name('footer.setup');
+        Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
+        // Route::get('/add/testimonial', 'AddTestimonial')->name('add.testimonial');
+        // Route::post('/store/testimonial', 'StoreTestimonial')->name('store.testimonial');
+        // Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
+        // Route::post('/update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
+        // Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
     });
 });
 
