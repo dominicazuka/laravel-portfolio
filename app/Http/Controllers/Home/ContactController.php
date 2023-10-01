@@ -20,23 +20,29 @@ class ContactController extends Controller
 
     public function StoreMessage(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'phone' => 'required',
-            'message' => 'required',
+            'name' => 'required|string|min:2|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|regex:/^[A-Za-z\s]+$/',
+            'phone' => 'required|numeric',
+            'message' => 'required|string',
         ], [
             'name.required' => 'Name is required',
+            'name.min' => 'Name must be at least 2 characters',
+            'name.max' => 'Name can be at most 255 characters',
             'email.required' => 'Email is required',
+            'email.email' => 'Invalid email format',
+            'email.max' => 'Email can be at most 255 characters',
             'subject.required' => 'Subject is required',
+            'subject.regex' => 'Invalid subject format',
             'phone.required' => 'Phone is required',
+            'phone.numeric' => 'Phone must be a number',
             'message.required' => 'Message is required',
         ]);
 
        // Check if validation fails
         if ($validator->fails()) {
             $errorNotification = [
-                'message' => 'Error occurred, message not sent',
+                'message' => 'Error occurred, message not sent. Check the form',
                 'alert-type' => 'error',
             ];
 

@@ -3,7 +3,9 @@
     @php
         $services = App\Models\Services::latest()->get();
         $allTestimonial = App\Models\Testimonial::latest()->get();
-        $blogs = App\Models\Blog::latest()->limit(3)->get(); //gets 3 latest post
+        $blogs = App\Models\Blog::latest()
+            ->limit(3)
+            ->get(); //gets 3 latest post
     @endphp
     <!-- main-area -->
     <main>
@@ -393,24 +395,27 @@
                         <div class="col-lg-4 col-md-6 col-sm-9">
                             <div class="blog__post__item">
                                 <div class="blog__post__thumb">
-                                    <a href="{{ route('blog.details', $item->id) }}"><img
-                                        src="{{ $item->blog_image }}"
+                                    <a href="{{ route('blog.details', $item->id) }}"><img src="{{ $item->blog_image }}"
                                             alt=""></a>
                                     <div class="blog__post__tags">
-                                        <a href="{{ route('category.blog', $item->blog_category_id) }}">{{ $item['category']['blog_category'] }}</a>
+                                        <a
+                                            href="{{ route('category.blog', $item->blog_category_id) }}">{{ $item['category']['blog_category'] }}</a>
                                     </div>
                                 </div>
                                 <div class="blog__post__content">
-                                    <span class="date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
-                                    <h3 class="title"><a href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a></h3>
-                                    <a href="{{ route('blog.details', $item->id) }}"  class="read__more">Read mORe</a>
+                                    <span
+                                        class="date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                                    <h3 class="title"><a
+                                            href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a>
+                                    </h3>
+                                    <a href="{{ route('blog.details', $item->id) }}" class="read__more">Read mORe</a>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
                 <div class="blog__button text-center">
-                    <a href="{{ route('home.blog') }}"  class="btn">more blog</a>
+                    <a href="{{ route('home.blog') }}" class="btn">more blog</a>
                 </div>
             </div>
         </section>
@@ -436,27 +441,32 @@
                             <div class="homeContact__form">
                                 <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
                                     @csrf
-                                    <input name="name" type="text" placeholder="Enter name*">
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                    <input name="email" type="email" placeholder="Enter your mail*">
+                                    <input name="name" type="text" placeholder="Enter name*">
+
                                     @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                    <input name="subject" type="text" placeholder="Enter your subject*">
+                                    <input name="email" type="email" placeholder="Enter your mail*">
+
                                     @error('subject')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                    <input name="phone" type="text" placeholder="Your Phone*">
+                                    <input name="subject" type="text" placeholder="Enter your subject*">
+
                                     @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                    <input name="phone" type="text" placeholder="Your Phone*">
 
-                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
+
                                     @error('message')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
+
                                     <button type="submit" class="btn">send message</button>
                                 </form>
                             </div>

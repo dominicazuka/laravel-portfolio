@@ -44,34 +44,38 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <input name="name" type="text" placeholder="Enter your name*">
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                            <input name="name" type="text" placeholder="Enter your name*">
+                           
                         </div>
                         <div class="col-md-6">
-                            <input name="email" type="email" placeholder="Enter your mail*">
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                            <input name="email" type="email" placeholder="Enter your mail*">
+                            
                         </div>
                         <div class="col-md-6">
-                            <input name="subject" type="text" placeholder="Enter your subject*">
                             @error('subject')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                            <input name="subject" type="text" placeholder="Enter your subject*">
+                           
                         </div>
                         <div class="col-md-6">
-                            <input name="phone" type="text" placeholder="Your Phone*">
                             @error('phone')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                            <input name="phone" type="text" placeholder="Your Phone*">
+                            
                         </div>
                     </div>
-                    <textarea name="message" id="message" placeholder="Enter your message*"></textarea>
                     @error('message')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+                    <textarea name="message" id="message" placeholder="Enter your message*"></textarea>
                     <button type="submit" class="btn">send message</button>
                 </form>
             </div>
@@ -139,27 +143,42 @@
                             <div class="homeContact__form">
                                 <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
                                     @csrf
-                                    <input name="name" type="text" placeholder="Enter name*">
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="email" type="email" placeholder="Enter your mail*">
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="subject" type="text" placeholder="Enter your subject*">
-                                    @error('subject')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="phone" type="text" placeholder="Your Phone*">
-                                    @error('phone')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-
-                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
-                                    @error('message')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <div class="form-group">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="name" type="text" placeholder="Enter name*">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="email" type="email" placeholder="Enter your mail*">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        @error('subject')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="subject" type="text" placeholder="Enter your subject*">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="phone" type="text" placeholder="Your Phone*">
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                        @error('message')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                        
+                                    </div>
+                                    
                                     <button type="submit" class="btn">send message</button>
                                 </form>
                             </div>
