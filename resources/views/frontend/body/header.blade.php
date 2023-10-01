@@ -1,5 +1,6 @@
 @php
     $allFooter = App\Models\Footer::find(1);
+    $route = Route::current()->getName();
 @endphp
 
 {{--  <!-- header-area -->  --}}
@@ -19,24 +20,24 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                    <li><a href="{{ route('home.about') }}">About</a></li>
-                                    <li><a href="{{ route('home.services') }}">Services</a></li>
-                                    <li class="menu-item-has-children"><a
+                                    <li class="{{ $route == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="{{ $route == 'home.about' ? 'active' : '' }}"><a href="{{ route('home.about') }}">About</a></li>
+                                    <li class="{{ $route == 'home.services' ? 'active' : '' }}"><a href="{{ route('home.services') }}">Services</a></li>
+                                    <li class="{{ $route == 'home.portfolio' ? 'active' : '' }} menu-item-has-children"><a
                                             href="{{ route('home.portfolio') }}">Portfolio</a>
                                         {{--  <ul class="sub-menu">
                                                     <li><a href="portfolio.html">Portfolio</a></li>
                                                     <li><a href="portfolio-details.html">Portfolio Details</a></li>
                                                 </ul>  --}}
                                     </li>
-                                    <li class="menu-item-has-children"><a href="{{ route('home.blog') }}">
+                                    <li class="{{ $route == 'home.blog' ? 'active' : '' }} menu-item-has-children"><a href="{{ route('home.blog') }}">
                                             Blog</a>
                                         {{--  <ul class="sub-menu">
                                                     <li><a href="blog.html">Our News</a></li>
                                                     <li><a href="blog-details.html">News Details</a></li>
                                                 </ul>  --}}
                                     </li>
-                                    <li><a href="{{ route('contact.me') }}">contact</a></li>
+                                    <li class="{{ $route == 'contact.me' ? 'active' : '' }}"><a href="{{ route('contact.me') }}">contact</a></li>
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">

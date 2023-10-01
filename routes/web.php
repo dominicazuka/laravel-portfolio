@@ -12,6 +12,7 @@ use App\Http\Controllers\Home\ServiceController;
 use App\Http\Controllers\Home\PartnerController;
 use App\Http\Controllers\Home\TestimonialController;
 use App\Http\Controllers\Home\FooterController;
+use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -153,5 +152,6 @@ Route::get('/service/details/{id}', [ServiceController::class, 'ServiceDetails']
 Route::get('/services', [ServiceController::class, 'HomeServices'])->name('home.services'); // User view
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact.me'); // User view
 Route::post('/store/message', [ContactController::class, 'StoreMessage'])->name('store.message'); // User view
+Route::get('/', [HomeController::class, 'HomeMain'])->name('home'); // User view
 
 require __DIR__ . '/auth.php';

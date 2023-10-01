@@ -7,6 +7,11 @@
             ->limit(3)
             ->get(); //gets 3 latest post
     @endphp
+
+    {{--  Page title  --}}
+@section('title')
+About - Software Engineer | Full Stack Developer
+@endsection
     <!-- main-area -->
     <main>
 

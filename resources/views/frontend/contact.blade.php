@@ -1,5 +1,11 @@
 @extends('frontend.main_master')
 @section('main')
+
+{{--  Page title  --}}
+@section('title')
+Contact - Software Engineer | Full Stack Developer
+@endsection
+
     <main>
 
         <!-- breadcrumb-area -->
@@ -48,28 +54,28 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             <input name="name" type="text" placeholder="Enter your name*">
-                           
+
                         </div>
                         <div class="col-md-6">
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             <input name="email" type="email" placeholder="Enter your mail*">
-                            
+
                         </div>
                         <div class="col-md-6">
                             @error('subject')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             <input name="subject" type="text" placeholder="Enter your subject*">
-                           
+
                         </div>
                         <div class="col-md-6">
                             @error('phone')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                             <input name="phone" type="text" placeholder="Your Phone*">
-                            
+
                         </div>
                     </div>
                     @error('message')
@@ -148,37 +154,37 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <input name="name" type="text" placeholder="Enter name*">
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <input name="email" type="email" placeholder="Enter your mail*">
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         @error('subject')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <input name="subject" type="text" placeholder="Enter your subject*">
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <input name="phone" type="text" placeholder="Your Phone*">
-                                       
+
                                     </div>
                                     <div class="form-group">
                                         @error('message')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <textarea name="message" id="message" placeholder="Message*"></textarea>
-                                        
+
                                     </div>
-                                    
+
                                     <button type="submit" class="btn">send message</button>
                                 </form>
                             </div>

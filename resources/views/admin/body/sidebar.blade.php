@@ -105,7 +105,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-bullhorn"></i>
+                        <i class="fas fa-sort-amount-down"></i>
                         <span>Footer Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -115,7 +115,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-bullhorn"></i>
+                        <i class="fas fa-mail-bulk"></i>
                         <span>Contact Messages</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

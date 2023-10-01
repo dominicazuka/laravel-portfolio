@@ -4,9 +4,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dominic Azuka - Software Engineer | Full Stack Developer</title>
-    <meta name="description"
-        content="Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM">
+    <title>@yield('title')</title>
+    <meta name="title" content="@yield('title', 'Dominic Azuka - Software Engineer | Full Stack Developer')" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="@yield('description', 'Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM')" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@yield('og_url', url()->current())" />
+    <meta property="og:title" content="@yield('og_title', 'Dominic Azuka - Software Engineer | Full Stack Developer')" />
+    <meta property="og:description" content="@yield('og_description', 'Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM')" />
+    <meta property="og:image" content="@yield('og_image', 'https://i.ibb.co/qD14wW7/DSC-2396-1.png')" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="@yield('twitter_url', url()->current())" />
+    <meta property="twitter:title" content="@yield('twitter_title', 'Dominic Azuka - Software Engineer | Full Stack Developer')" />
+    <meta property="twitter:description" content="@yield('twitter_description', 'Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM')" />
+    <meta property="twitter:image" content="@yield('twitter_image', 'https://i.ibb.co/qD14wW7/DSC-2396-1.png')" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.ico') }}">
