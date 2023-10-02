@@ -212,7 +212,7 @@ class ServiceController extends Controller
     public function HomeServices()
     {
         $service = Services::latest()->get();
-        $allServices = Services::latest()->get();
+        $allServices = Services::latest()->paginate(3);
         $allBlogs = Blog::latest()->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
         $icons = MultiImage::all();

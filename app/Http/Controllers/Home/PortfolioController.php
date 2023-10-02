@@ -175,7 +175,7 @@ class PortfolioController extends Controller
 
     public function HomePortfolio()
     {
-        $portfolio = Portfolio::latest()->get();
+        $portfolio = Portfolio::latest()->paginate(3);
         $icons = MultiImage::all();
         return view('frontend.portfolio', compact('portfolio', 'icons'));
     }

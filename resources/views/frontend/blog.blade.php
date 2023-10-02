@@ -2,9 +2,15 @@
 @section('main')
 
 @section('title', 'Blog - Software Engineer | Full Stack Developer')
-@section('description', 'Explore Dominic Azuka\'s blog, featuring articles on software development, coding tips, and industry insights.')
-@section('og_description', 'Discover a collection of insightful blog articles by Dominic Azuka, a Software Engineer and Full Stack Developer.')
-@section('twitter_description', 'Explore the latest blog posts by Dominic Azuka, a Software Engineer and Full Stack Developer, covering software development topics.')
+@section('description',
+    'Explore Dominic Azuka\'s blog, featuring articles on software development, coding tips, and
+    industry insights.')
+@section('og_description',
+    'Discover a collection of insightful blog articles by Dominic Azuka, a Software Engineer and
+    Full Stack Developer.')
+@section('twitter_description',
+    'Explore the latest blog posts by Dominic Azuka, a Software Engineer and Full Stack
+    Developer, covering software development topics.')
 
     <!-- main-area -->
     <main>
@@ -72,18 +78,7 @@
                         @endforeach
                         {{--  Pagination  --}}
                         <div class="pagination-wrap">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="far fa-long-arrow-left"></i></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="far fa-long-arrow-right"></i></a></li>
-                                </ul>
-                            </nav>
+                            {{ $allBlogs->links('vendor.pagination.custom') }}
                         </div>
                     </div>
 
@@ -177,63 +172,8 @@
             </div>
         </section>
         <!-- blog-area-end -->
-
-
-        <!-- contact-area -->
-        <section class="homeContact homeContact__style__two">
-            <div class="container">
-                <div class="homeContact__wrap">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="section__title">
-                                <span class="sub-title">07 - Say hello</span>
-                                <h2 class="title">Any questions? Feel free <br> to contact</h2>
-                            </div>
-                            <div class="homeContact__content">
-                                <p>You can always reach out to me with any project idea or general enquiry</p>
-                                <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="homeContact__form">
-                                <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
-                                    @csrf
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="name" type="text" placeholder="Enter name*">
-
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="email" type="email" placeholder="Enter your mail*">
-
-                                    @error('subject')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="subject" type="text" placeholder="Enter your subject*">
-
-                                    @error('phone')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="phone" type="text" placeholder="Your Phone*">
-
-
-                                    @error('message')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
-
-                                    <button type="submit" class="btn">send message</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- contact-area-end -->
-
     </main>
     <!-- main-area-end -->
+    <div style="height: 150px;"></div>
+
 @endsection

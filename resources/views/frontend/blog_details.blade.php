@@ -90,7 +90,7 @@
                                                     <div class="blog__next__prev__post">
                                                         <div class="blog__next__prev__thumb">
                                                             <a href="blog-details.html"><img
-                                                                    src="assets/img/blog/blog_prev.jpg" alt=""></a>
+                                                                    src="{{ asset('frontend/assets/img/blog/blog_prev.jpg') }}" alt=""></a>
                                                         </div>
                                                         <div class="blog__next__prev__content">
                                                             <h5 class="title"><a href="blog-details.html">Digital Marketing
@@ -106,7 +106,7 @@
                                                     <div class="blog__next__prev__post">
                                                         <div class="blog__next__prev__thumb">
                                                             <a href="blog-details.html"><img
-                                                                    src="assets/img/blog/blog_next.jpg" alt=""></a>
+                                                                    src="{{ asset('frontend/assets/img/blog/blog_next.jpg') }}" alt=""></a>
                                                         </div>
                                                         <div class="blog__next__prev__content">
                                                             <h5 class="title"><a href="blog-details.html">App Prototyping
@@ -200,33 +200,32 @@
                                         <div class="comment__title">
                                             <h4 class="title">Write your comment</h4>
                                         </div>
-                                        <form action="#">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Enter your name*">
+                                            <form class="mb-5" action="#" style="margin-bottom: 50px;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="text" placeholder="Enter your name*">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="email" placeholder="Enter your mail*">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" placeholder="Enter your number*">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" placeholder="Website*">
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <input type="email" placeholder="Enter your mail*">
+                                                <textarea name="message" id="message" placeholder="Enter your Massage*"></textarea>
+                                                <div class="form-grp checkbox-grp">
+                                                    <input type="checkbox" id="checkbox">
+                                                    <label for="checkbox">Save my name, email, and website in this browser for
+                                                        the next time I comment.</label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Enter your number*">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Website*">
-                                                </div>
-                                            </div>
-                                            <textarea name="message" id="message" placeholder="Enter your Massage*"></textarea>
-                                            <div class="form-grp checkbox-grp">
-                                                <input type="checkbox" id="checkbox">
-                                                <label for="checkbox">Save my name, email, and website in this browser for
-                                                    the next time I comment.</label>
-                                            </div>
-                                            <button type="submit" class="btn">post a comment</button>
-                                        </form>
+                                                <button type="submit" class="btn">post a comment</button>
+                                            </form>
                                     </div>
                                 </div>
                             </div>
-
                             {{--  Recent Blog and Categories  --}}
                             <div class="col-lg-4">
                                 <aside class="blog__sidebar">
@@ -317,66 +316,7 @@
                     </div>
                 </section>
                 {{--  <!-- blog-details-area-end -->  --}}
-
-
-                {{--  <!-- contact-area -->  --}}
-                <section class="homeContact homeContact__style__two">
-                    <div class="container">
-                        <div class="homeContact__wrap">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="section__title">
-                                        <span class="sub-title">07 - Say hello</span>
-                                        <h2 class="title">Any questions? Feel free <br> to contact</h2>
-                                    </div>
-                                    <div class="homeContact__content">
-                                        <p>You can always reach out to me with any project idea or general enquiry</p>
-                                        <h2 class="mail"><a
-                                                href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a>
-                                        </h2>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="homeContact__form">
-                                        <form method="post" action="{{ route('store.message') }}"
-                                            class="sidebar__contact">
-                                            @csrf
-                                            @error('name')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <input name="name" type="text" placeholder="Enter name*">
-
-                                            @error('email')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <input name="email" type="email" placeholder="Enter your mail*">
-
-                                            @error('subject')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <input name="subject" type="text" placeholder="Enter your subject*">
-
-                                            @error('phone')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <input name="phone" type="text" placeholder="Your Phone*">
-
-
-                                            @error('message')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            <textarea name="message" id="message" placeholder="Message*"></textarea>
-
-                                            <button type="submit" class="btn">send message</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {{--  <!-- contact-area-end -->  --}}
-
             </main>
             {{--  <!-- main-area-end -->  --}}
+        <div style="height: 150px;"></div>
         @endsection

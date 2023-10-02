@@ -146,7 +146,7 @@ class BlogController extends Controller
 
     public function CategoryBlog($id)
     {
-        $blogPost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
+        $blogPost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->paginate(2);
         $allBlogs = Blog::latest()->limit(5)->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
         $categoryName = BlogCategory::findOrFail($id);
@@ -162,7 +162,7 @@ class BlogController extends Controller
 
     public function HomeBlog()
     {
-        $allBlogs = Blog::latest()->get();
+        $allBlogs = Blog::latest()->paginate(3);
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
         $icons = MultiImage::all();
         return view('frontend.blog', compact('allBlogs', 'categories', 'icons'));

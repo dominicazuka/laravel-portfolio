@@ -5,9 +5,12 @@
     @endphp
 
 @section('title', $portfolio->portfolio_name . ' Portfolio - Software Engineer | Full Stack Developer')
-@section('description', 'Explore the detailed project portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, a Software Engineer and Full Stack Developer.')
-@section('og_description', 'Dive into the detailed portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, showcasing skills in software development and design.')
-@section('twitter_description', 'Discover the comprehensive portfolio entry for '.$portfolio->portfolio_name.' Project by Dominic Azuka, highlighting software development expertise.')
+@section('description', 'Explore the detailed project portfolio entry for ' . $portfolio->portfolio_name . ' Project by
+    Dominic Azuka, a Software Engineer and Full Stack Developer.')
+@section('og_description', 'Dive into the detailed portfolio entry for ' . $portfolio->portfolio_name . ' Project by
+    Dominic Azuka, showcasing skills in software development and design.')
+@section('twitter_description', 'Discover the comprehensive portfolio entry for ' . $portfolio->portfolio_name . '
+    Project by Dominic Azuka, highlighting software development expertise.')
 
     <!-- main-area -->
     <main>
@@ -57,33 +60,50 @@
                         <aside class="services__sidebar">
                             <div class="widget">
                                 <h5 class="title">Get in Touch</h5>
-                                <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
+                                <form id="myForm" method="post" action="{{ route('store.message') }}"
+                                    class="sidebar__contact">
                                     @csrf
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="name" type="text" placeholder="Enter name*">
 
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="email" type="email" placeholder="Enter your mail*">
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="name" type="text" placeholder="Enter name*" id="name">
+                                    </div>
 
-                                    @error('subject')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="subject" type="text" placeholder="Enter your subject*">
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="email" type="email" placeholder="Enter your mail*" id="email">
+                                    </div>
 
-                                    @error('phone')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="phone" type="text" placeholder="Your Phone*">
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('subject')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="subject" type="text" placeholder="Enter your subject*"
+                                            id="subject">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="phone" type="text" placeholder="Your Phone*" id="phone">
+                                    </div>
 
-                                    @error('message')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('message')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    </div>
 
                                     <button type="submit" class="btn">send message</button>
                                 </form>
@@ -127,63 +147,61 @@
             </div>
         </section>
         <!-- portfolio-details-area-end -->
-
-
-        <!-- contact-area -->
-        <section class="homeContact homeContact__style__two">
-            <div class="container">
-                <div class="homeContact__wrap">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="section__title">
-                                <span class="sub-title">07 - Say hello</span>
-                                <h2 class="title">Any questions? Feel free <br> to contact</h2>
-                            </div>
-                            <div class="homeContact__content">
-                                <p>You can always reach out to me with any project idea or general enquiry</p>
-                                <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="homeContact__form">
-                                <form method="post" action="{{ route('store.message') }}" class="sidebar__contact">
-                                    @csrf
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="name" type="text" placeholder="Enter name*">
-
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="email" type="email" placeholder="Enter your mail*">
-
-                                    @error('subject')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="subject" type="text" placeholder="Enter your subject*">
-
-                                    @error('phone')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <input name="phone" type="text" placeholder="Your Phone*">
-
-
-                                    @error('message')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <textarea name="message" id="message" placeholder="Message*"></textarea>
-
-                                    <button type="submit" class="btn">send message</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- contact-area-end -->
-
     </main>
     <!-- main-area-end -->
+    <div style="height: 150px;"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#footerForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    subject: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    },
+                    message: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    name: {
+                        required: 'Please Enter Name',
+                    },
+                    email: {
+                        required: 'Please Enter Email',
+                        email: 'Please Enter a Valid Email',
+                    },
+                    subject: {
+                        required: 'Please Enter Subject',
+                    },
+                    phone: {
+                        required: 'Please Enter Phone Number',
+                    },
+                    message: {
+                        required: 'Please Enter Message',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').find('.error-message').html(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
+            });
+        });
+    </script>
 @endsection

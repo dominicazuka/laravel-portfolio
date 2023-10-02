@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
     {{-- toast notification --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,15 +65,14 @@
         @yield('main')
     </main>
     <!-- main-area-end -->
-
-
+    
+    <!-- Contact-area -->
+    @include('frontend.body.contact')
+    <!-- Contact-area-end -->
 
     <!-- Footer-area -->
     @include('frontend.body.footer')
     <!-- Footer-area-end -->
-
-
-
 
     <!-- JS here -->
     <script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
@@ -87,7 +86,8 @@
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-    {{-- toast notification --}}
+    {{--  Validate.js  --}}
+    <script defer src="{{ asset('frontend/assets/js/validate.min.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
