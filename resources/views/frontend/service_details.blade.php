@@ -68,10 +68,18 @@
                                         <ul class="blog__details__social">
                                             <li class="title">Share :</li>
                                             <li class="social-icons">
-                                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-twitter-square"></i>
+                                                </a>
+                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-linkedin"></i>
+                                                </a>
+                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-pinterest"></i>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
