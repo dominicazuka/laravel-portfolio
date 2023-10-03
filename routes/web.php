@@ -8,6 +8,7 @@ use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Home\CommentController;
 use App\Http\Controllers\Home\ServiceController;
 use App\Http\Controllers\Home\PartnerController;
 use App\Http\Controllers\Home\TestimonialController;
@@ -139,6 +140,12 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('/contact/message', 'ContactMessage')->name('contact.message');
         Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
     });
+
+    //Comment All Route
+    Route::controller(CommentController::class)->group(function () {
+        Route::get('/comment/message', 'CommentMessage')->name('comment.message');
+        Route::get('/delete/comment/{id}', 'DeleteComment')->name('delete.comment');
+    });
 });
 
 // Routes accessible to all users (excluding auth middleware)
@@ -153,5 +160,6 @@ Route::get('/services', [ServiceController::class, 'HomeServices'])->name('home.
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact.me'); // User view
 Route::post('/store/message', [ContactController::class, 'StoreMessage'])->name('store.message'); // User view
 Route::get('/', [HomeController::class, 'HomeMain'])->name('home'); // User view
+Route::post('/store/comment', [CommentController::class, 'StoreComment'])->name('store.comment'); // User view
 
 require __DIR__ . '/auth.php';

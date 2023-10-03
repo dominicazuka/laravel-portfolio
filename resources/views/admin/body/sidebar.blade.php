@@ -122,6 +122,16 @@
                         <li><a href="{{ route('contact.message') }}">Contact Message</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <span>Comment Messages</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('comment.message') }}">Comment Message</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

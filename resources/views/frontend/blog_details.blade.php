@@ -3,14 +3,21 @@
 
 
         @section('title', $blog->blog_title)
-        @section('description', 'Read the detailed blog post titled "Blog Post Title" by Dominic Azuka, a Software
+        @section('description',
+            'Read the detailed blog post titled "Blog Post Title" by Dominic Azuka, a Software
             Engineer and Full Stack Developer.')
-        @section('og_description', 'Dive into the blog post titled "Blog Post Title" by Dominic Azuka, a Software
+        @section('og_description',
+            'Dive into the blog post titled "Blog Post Title" by Dominic Azuka, a Software
             Engineer and Full Stack Developer, and explore the insights shared.')
-        @section('twitter_description', 'Explore the in-depth blog post titled "Blog Post Title" by Dominic Azuka, a
+        @section('twitter_description',
+            'Explore the in-depth blog post titled "Blog Post Title" by Dominic Azuka, a
             Software Engineer and Full Stack Developer.')
 
-
+            @php
+                $allComments = App\Models\Comment::where('blog_id', $blog->id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10);
+            @endphp
             {{--  <!-- main-area -->  --}}
             <main>
                 {{--  <!-- breadcrumb-area -->  --}}
@@ -65,152 +72,124 @@
                                         <ul class="blog__details__tag">
                                             <li class="title">Tag:</li>
                                             <li class="tags-list">
-                                                <a href="#">{{ $blog->blog_tags }}</a>
+                                                @php
+                                                $tags = explode(',', $blog->blog_tags);
+                                                @endphp
+
+                                                @foreach ($tags as $tag)
+                                                    <a href="#" class="tag-button">{{ $tag }}</a>
+                                                @endforeach
                                             </li>
                                         </ul>
+
                                         {{--  social media handles  --}}
                                         <ul class="blog__details__social">
                                             <li class="title">Share :</li>
                                             <li class="social-icons">
-                                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-twitter-square"></i>
+                                                </a>
+                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-linkedin"></i>
+                                                </a>
+                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                    <i class="fab fa-pinterest"></i>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
 
                                     <!-- Previous and next post -->
                                     <div class="blog__next__prev">
-                                      <div class="row justify-content-between">
-                                        {{-- Previous Post --}}
-                                        <div class="col-xl-5 col-md-6">
-                                          <div class="blog__next__prev__item">
-                                            <h4 class="title">Previous Post</h4>
-                                            @if ($previousPost)
-                                              <div class="blog__next__prev__post">
-                                                <div class="blog__next__prev__thumb">
-                                                  <a href="{{ route('blog.details', $previousPost->id) }}">
-                                                    <img src="{{ asset($previousPost->blog_image) }}" alt="">
-                                                  </a>
+                                        <div class="row justify-content-between">
+                                            {{-- Previous Post --}}
+                                            <div class="col-xl-5 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="blog__next__prev__item">
+                                                    <h4 class="title">Previous Post</h4>
+                                                    @if ($previousPost)
+                                                        <div class="blog__next__prev__post">
+                                                            <div class="blog__next__prev__thumb">
+                                                                <a href="{{ route('blog.details', $previousPost->id) }}">
+                                                                    <img src="{{ asset($previousPost->blog_image) }}"
+                                                                        alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="blog__next__prev__content">
+                                                                <h5 class="title">
+                                                                    <a
+                                                                        href="{{ route('blog.details', $previousPost->id) }}">
+                                                                        {{ $previousPost->blog_title }}
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <p>No previous post available.</p>
+                                                    @endif
                                                 </div>
-                                                <div class="blog__next__prev__content">
-                                                  <h5 class="title">
-                                                    <a href="{{ route('blog.details', $previousPost->id) }}">
-                                                      {{ $previousPost->blog_title }}
-                                                    </a>
-                                                  </h5>
-                                                </div>
-                                              </div>
-                                            @else
-                                              <p>No previous post available.</p>
-                                            @endif
-                                          </div>
-                                        </div>
+                                            </div>
 
-                                        {{-- Next Post --}}
-                                        <div class="col-xl-5 col-md-6">
-                                          <div class="blog__next__prev__item next_post text-end">
-                                            <h4 class="title">Next Post</h4>
-                                            @if ($nextPost)
-                                              <div class="blog__next__prev__post">
-                                                <div class="blog__next__prev__thumb">
-                                                  <a href="{{ route('blog.details', $nextPost->id) }}">
-                                                    <img src="{{ asset($nextPost->blog_image) }}" alt="">
-                                                  </a>
+                                            {{-- Next Post --}}
+                                            <div class="col-xl-5 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="blog__next__prev__item next_post text-end">
+                                                    <h4 class="title">Next Post</h4>
+                                                    @if ($nextPost)
+                                                        <div class="blog__next__prev__post">
+                                                            <div class="blog__next__prev__thumb">
+                                                                <a href="{{ route('blog.details', $nextPost->id) }}">
+                                                                    <img src="{{ asset($nextPost->blog_image) }}"
+                                                                        alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="blog__next__prev__content">
+                                                                <h5 class="title">
+                                                                    <a href="{{ route('blog.details', $nextPost->id) }}">
+                                                                        {{ $nextPost->blog_title }}
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <p>No next post available.</p>
+                                                    @endif
                                                 </div>
-                                                <div class="blog__next__prev__content">
-                                                  <h5 class="title">
-                                                    <a href="{{ route('blog.details', $nextPost->id) }}">
-                                                      {{ $nextPost->blog_title }}
-                                                    </a>
-                                                  </h5>
-                                                </div>
-                                              </div>
-                                            @else
-                                              <p>No next post available.</p>
-                                            @endif
-                                          </div>
+                                            </div>
                                         </div>
-                                      </div>
                                     </div>
-
                                     {{--  Comment  --}}
                                     <div class="comment comment__wrap">
                                         <div class="comment__title">
-                                            <h4 class="title">(04) Comment</h4>
+                                            <h4 class="title">({{ count($allComments) }}) Comment</h4>
                                         </div>
                                         <ul class="comment__list">
-                                            <li class="comment__item">
-                                                <div class="comment__thumb">
-                                                    <img src="assets/img/blog/comment_thumb01.png" alt="">
-                                                </div>
-                                                <div class="comment__content">
-                                                    <div class="comment__avatar__info">
-                                                        <div class="info">
-                                                            <h4 class="title">Rohan De Spond</h4>
-                                                            <span class="date">25 january 2021</span>
+                                            @if ($allComments->isEmpty())
+                                                <li class="comment__item">
+                                                    <p>No comments available</p>
+                                                </li>
+                                            @else
+                                                @foreach ($allComments as $item)
+                                                    <li class="comment__item">
+                                                        <div class="comment__thumb">
+                                                            {{--  <img src=" {{ asset('frontend/assets/img/blog/comment_thumb01.png') }}" alt=""> to be implemented in future  --}}
                                                         </div>
-                                                        <a href="#" class="reply"><i
-                                                                class="far fa-reply-all"></i></a>
-                                                    </div>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have. There are many variations of passages of Lorem
-                                                        Ipsum available, but the majority have</p>
-                                                </div>
-                                            </li>
-                                            <li class="comment__item children">
-                                                <div class="comment__thumb">
-                                                    <img src="assets/img/blog/comment_thumb02.png" alt="">
-                                                </div>
-                                                <div class="comment__content">
-                                                    <div class="comment__avatar__info">
-                                                        <div class="info">
-                                                            <h4 class="title">Johan Ritaxon</h4>
-                                                            <span class="date">25 january 2021</span>
+                                                        <div class="comment__content">
+                                                            <div class="comment__avatar__info">
+                                                                <div class="info">
+                                                                    <h4 class="title">{{ $item->name }}</h4>
+                                                                    <span
+                                                                        class="date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                                                                </div>
+                                                                {{--  <a href="#" class="reply"><i
+                                                                    class="far fa-reply-all"></i></a> implement in future  --}}
+                                                            </div>
+                                                            <p>{{ $item->message }}</p>
                                                         </div>
-                                                        <a href="#" class="reply"><i
-                                                                class="far fa-reply-all"></i></a>
-                                                    </div>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have. There are many variations of passages</p>
-                                                </div>
-                                            </li>
-                                            <li class="comment__item">
-                                                <div class="comment__thumb">
-                                                    <img src="assets/img/blog/comment_thumb03.png" alt="">
-                                                </div>
-                                                <div class="comment__content">
-                                                    <div class="comment__avatar__info">
-                                                        <div class="info">
-                                                            <h4 class="title">Alexardy Ditartina</h4>
-                                                            <span class="date">25 january 2021</span>
-                                                        </div>
-                                                        <a href="#" class="reply"><i
-                                                                class="far fa-reply-all"></i></a>
-                                                    </div>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have. There are many variations of passages of Lorem
-                                                        Ipsum available, but the majority have</p>
-                                                </div>
-                                            </li>
-                                            <li class="comment__item children">
-                                                <div class="comment__thumb">
-                                                    <img src="assets/img/blog/comment_thumb04.png" alt="">
-                                                </div>
-                                                <div class="comment__content">
-                                                    <div class="comment__avatar__info">
-                                                        <div class="info">
-                                                            <h4 class="title">Rashedul islam Kabir</h4>
-                                                            <span class="date">25 january 2021</span>
-                                                        </div>
-                                                        <a href="#" class="reply"><i
-                                                                class="far fa-reply-all"></i></a>
-                                                    </div>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have. There are many variations of passages</p>
-                                                </div>
-                                            </li>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                     {{--  Comment Form  --}}
@@ -218,29 +197,54 @@
                                         <div class="comment__title">
                                             <h4 class="title">Write your comment</h4>
                                         </div>
-                                            <form class="mb-5" action="#" style="margin-bottom: 50px;">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input type="text" placeholder="Enter your name*">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="email" placeholder="Enter your mail*">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="text" placeholder="Enter your number*">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="text" placeholder="Website*">
-                                                    </div>
+                                        <form id="commentForm" method="post" action="{{ route('store.comment') }}">
+                                            @csrf
+                                            <input name="blog_id" type="hidden" value="{{ $blog->id }}">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <span class="text-danger error-message"></span>
+                                                    @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                    <input name="name" type="text" placeholder="Enter your name*">
                                                 </div>
-                                                <textarea name="message" id="message" placeholder="Enter your Massage*"></textarea>
-                                                <div class="form-grp checkbox-grp">
-                                                    <input type="checkbox" id="checkbox">
-                                                    <label for="checkbox">Save my name, email, and website in this browser for
-                                                        the next time I comment.</label>
+                                                <div class="form-group col-md-6">
+                                                    <span class="text-danger error-message"></span>
+                                                    @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                    <input name="email" type="email" placeholder="Enter your mail*">
                                                 </div>
-                                                <button type="submit" class="btn">post a comment</button>
-                                            </form>
+                                                <div class="form-group col-md-6">
+                                                    <span class="text-danger error-message"></span>
+                                                    @error('phone')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                    <input name="phone" type="text"
+                                                        placeholder="Enter your number*">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <span class="text-danger error-message"></span>
+                                                    @error('website')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                    <input name="website" type="text" placeholder="Website*">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="text-danger error-message"></span>
+                                                @error('message')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <textarea name="message" id="message" placeholder="Enter your Message*"></textarea>
+                                            </div>
+                                            <div class="form-grp checkbox-grp">
+                                                <input type="checkbox" id="checkbox">
+                                                <label for="checkbox">Save my name, email, and website in this browser for
+                                                    the next time I comment.</label>
+                                            </div>
+                                            <button type="submit" class="btn">post a comment</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -248,10 +252,10 @@
                             <div class="col-lg-4">
                                 <aside class="blog__sidebar">
                                     <div class="widget">
-                                        <form action="#" class="search-form">
+                                        {{--  <form action="#" class="search-form">
                                             <input type="text" placeholder="Search">
                                             <button type="submit"><i class="fal fa-search"></i></button>
-                                        </form>
+                                        </form>  --}}
                                     </div>
                                     {{--  Recent Blog  --}}
                                     <div class="widget">
@@ -286,7 +290,7 @@
                                         </ul>
                                     </div>
                                     {{--  Recent Comment  --}}
-                                    <div class="widget">
+                                    {{--  <div class="widget">
                                         <h4 class="widget-title">Recent Comment</h4>
                                         <ul class="sidebar__comment">
                                             <li class="sidebar__comment__item">
@@ -310,9 +314,9 @@
                                                     majority have</p>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div>  --}}
                                     {{--  Popular Tags  --}}
-                                    <div class="widget">
+                                    {{--  <div class="widget">
                                         <h4 class="widget-title">Popular Tags</h4>
                                         <ul class="sidebar__tags">
                                             <li><a href="blog.html">Business</a></li>
@@ -327,7 +331,7 @@
                                             <li><a href="blog.html">landing page</a></li>
                                             <li><a href="blog.html">data</a></li>
                                         </ul>
-                                    </div>
+                                    </div>  --}}
                                 </aside>
                             </div>
                         </div>
@@ -336,5 +340,61 @@
                 {{--  <!-- blog-details-area-end -->  --}}
             </main>
             {{--  <!-- main-area-end -->  --}}
-        <div style="height: 150px;"></div>
+            <div style="height: 150px;"></div>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#commentForm').validate({
+                        rules: {
+                            name: {
+                                required: true,
+                            },
+                            email: {
+                                required: true,
+                                email: true,
+                            },
+                            phone: {
+                                required: true,
+                            },
+                            website: { //not required
+                                url: true,
+                            },
+                            message: {
+                                required: true,
+                            },
+                        },
+                        messages: {
+                            name: {
+                                required: 'Please Enter Name',
+                            },
+                            email: {
+                                required: 'Please Enter Email',
+                                email: 'Please Enter a Valid Email',
+                            },
+                            phone: {
+                                required: 'Please Enter Phone Number',
+                            },
+                            website: {
+                                url: 'Please Enter a Valid Website URL',
+                            },
+                            message: {
+                                required: 'Please Enter Message',
+                            },
+                        },
+                        errorElement: 'span',
+                        errorPlacement: function(error, element) {
+                            error.addClass('invalid-feedback');
+                            element.closest('.form-group').find('.error-message').html(error);
+                        },
+                        highlight: function(element, errorClass, validClass) {
+                            $(element).addClass('is-invalid');
+                        },
+                        unhighlight: function(element, errorClass, validClass) {
+                            $(element).removeClass('is-invalid');
+                        },
+                    });
+                });
+            </script>
+
+
         @endsection
