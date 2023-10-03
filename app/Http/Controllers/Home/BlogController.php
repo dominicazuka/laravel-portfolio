@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use Image;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\MultiImage;
 
 class BlogController extends Controller
@@ -138,10 +139,23 @@ class BlogController extends Controller
     public function BlogDetails($id)
     {
         $blog = Blog::findOrFail($id);
+        // Find the previous and next post IDs based on the current post's ID and category.
+        $previousPost = DB::table('blogs')
+            ->where('id', '<', $id)
+            ->where('blog_category_id', $blog->blog_category_id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $nextPost = DB::table('blogs')
+            ->where('id', '>', $id)
+            ->where('blog_category_id', $blog->blog_category_id)
+            ->orderBy('id', 'asc')
+            ->first();
+
         $allBlogs = Blog::latest()->limit(5)->get();
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get(); //get data from blog Category model by name in ascending order
         $icons = MultiImage::all();
-        return view('frontend.blog_details', compact('blog', 'allBlogs', 'categories', 'icons'));
+        return view('frontend.blog_details', compact('blog', 'allBlogs', 'categories', 'icons', 'previousPost', 'nextPost'));
     } //end method
 
     public function CategoryBlog($id)

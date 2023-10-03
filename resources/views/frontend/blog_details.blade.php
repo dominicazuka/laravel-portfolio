@@ -80,43 +80,61 @@
                                         </ul>
                                     </div>
 
-                                    {{--  Previous and next post  --}}
+                                    <!-- Previous and next post -->
                                     <div class="blog__next__prev">
-                                        <div class="row justify-content-between">
-                                            {{--  Previous Post  --}}
-                                            <div class="col-xl-5 col-md-6">
-                                                <div class="blog__next__prev__item">
-                                                    <h4 class="title">Previous Post</h4>
-                                                    <div class="blog__next__prev__post">
-                                                        <div class="blog__next__prev__thumb">
-                                                            <a href="blog-details.html"><img
-                                                                    src="{{ asset('frontend/assets/img/blog/blog_prev.jpg') }}" alt=""></a>
-                                                        </div>
-                                                        <div class="blog__next__prev__content">
-                                                            <h5 class="title"><a href="blog-details.html">Digital Marketing
-                                                                    Agency Pricing Guide.</a></h5>
-                                                        </div>
-                                                    </div>
+                                      <div class="row justify-content-between">
+                                        {{-- Previous Post --}}
+                                        <div class="col-xl-5 col-md-6">
+                                          <div class="blog__next__prev__item">
+                                            <h4 class="title">Previous Post</h4>
+                                            @if ($previousPost)
+                                              <div class="blog__next__prev__post">
+                                                <div class="blog__next__prev__thumb">
+                                                  <a href="{{ route('blog.details', $previousPost->id) }}">
+                                                    <img src="{{ asset($previousPost->blog_image) }}" alt="">
+                                                  </a>
                                                 </div>
-                                            </div>
-                                            {{--  Next Post  --}}
-                                            <div class="col-xl-5 col-md-6">
-                                                <div class="blog__next__prev__item next_post text-end">
-                                                    <h4 class="title">Next Post</h4>
-                                                    <div class="blog__next__prev__post">
-                                                        <div class="blog__next__prev__thumb">
-                                                            <a href="blog-details.html"><img
-                                                                    src="{{ asset('frontend/assets/img/blog/blog_next.jpg') }}" alt=""></a>
-                                                        </div>
-                                                        <div class="blog__next__prev__content">
-                                                            <h5 class="title"><a href="blog-details.html">App Prototyping
-                                                                    Types, Example & Usages.</a></h5>
-                                                        </div>
-                                                    </div>
+                                                <div class="blog__next__prev__content">
+                                                  <h5 class="title">
+                                                    <a href="{{ route('blog.details', $previousPost->id) }}">
+                                                      {{ $previousPost->blog_title }}
+                                                    </a>
+                                                  </h5>
                                                 </div>
-                                            </div>
+                                              </div>
+                                            @else
+                                              <p>No previous post available.</p>
+                                            @endif
+                                          </div>
                                         </div>
+
+                                        {{-- Next Post --}}
+                                        <div class="col-xl-5 col-md-6">
+                                          <div class="blog__next__prev__item next_post text-end">
+                                            <h4 class="title">Next Post</h4>
+                                            @if ($nextPost)
+                                              <div class="blog__next__prev__post">
+                                                <div class="blog__next__prev__thumb">
+                                                  <a href="{{ route('blog.details', $nextPost->id) }}">
+                                                    <img src="{{ asset($nextPost->blog_image) }}" alt="">
+                                                  </a>
+                                                </div>
+                                                <div class="blog__next__prev__content">
+                                                  <h5 class="title">
+                                                    <a href="{{ route('blog.details', $nextPost->id) }}">
+                                                      {{ $nextPost->blog_title }}
+                                                    </a>
+                                                  </h5>
+                                                </div>
+                                              </div>
+                                            @else
+                                              <p>No next post available.</p>
+                                            @endif
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
+
                                     {{--  Comment  --}}
                                     <div class="comment comment__wrap">
                                         <div class="comment__title">
