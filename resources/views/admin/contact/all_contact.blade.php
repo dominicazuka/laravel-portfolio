@@ -21,11 +21,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="table-responsive card-body">
 
                             <h4 class="card-title">Contact Messages</h4>
 
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            <table id="datatable" class="table table-bordered dt-responsive"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
@@ -33,6 +33,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Message</th>
                                         <th>Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -52,6 +53,7 @@
                                             <td>
                                                 {{ $item->phone }}
                                             </td>
+                                            <td>{{ $item->message }}</td>
                                             <td>
                                                 {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}
                                             </td>
