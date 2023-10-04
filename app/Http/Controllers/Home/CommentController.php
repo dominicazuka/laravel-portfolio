@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class CommentController extends Controller
 {
@@ -43,6 +44,32 @@ class CommentController extends Controller
             ];
 
             return redirect()->back()->with($errorNotification)->withErrors($validator);
+        }
+
+        // Retrieve reCAPTCHA secret key from .env
+        $secretKey = env('RECAPTCHA_SECRET_KEY');
+
+        // Verify reCAPTCHA
+        $response = request('g-recaptcha-response');
+
+        $verificationResponse = Http::post("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$response}");
+
+        $data = $verificationResponse->json();
+
+        // Log the data
+        // \Log::info([
+        //     'response' => $response,
+        //     'data' => $data,
+        //     'secretKey' => $secretKey,
+        // ]);
+
+        if (!$data['success']) {
+            // CAPTCHA verification failed
+            $errorNotification = [
+                'message' => 'reCAPTCHA verification failed. Please try again.',
+                'alert-type' => 'error',
+            ];
+            return redirect()->back()->with($errorNotification);
         }
 
         Comment::insert([

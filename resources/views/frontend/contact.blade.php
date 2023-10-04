@@ -44,7 +44,7 @@
         <!-- contact-map -->
         <div id="contact-map">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96811.54759587669!2d-74.01263924803828!3d40.6880494567041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25bae694479a3%3A0xb9949385da52e69e!2sBarclays%20Center!5e0!3m2!1sen!2sbd!4v1636195194646!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.440625660489!2d7.365898974252758!3d9.114613287644529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104ddfa4a241f90d%3A0xf25bc8e0b3fe3065!2sLemon%20Street%2C%20Mab%20Global%20Estates!5e0!3m2!1sen!2suk!4v1696436966968!5m2!1sen!2suk"
                 allowfullscreen loading="lazy"></iframe>
         </div>
         <!-- contact-map-end -->
@@ -91,9 +91,9 @@
                         @enderror
                         <textarea name="message" id="message" placeholder="Enter your message*"></textarea>
                     </div>
-                    <div class="form-group text-center align-content-center justify-center mt-3 mb-5">
+                    <div class="form-group mt-3 mb-5">
                         <span class="text-danger recaptcha"></span>
-                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" style="display: flex; justify-content: center;"></div>
                     </div>
                     <div class="form-group text-center" id="loader" style="display: none;">
                         <div class="mb-3 spinner-border text-primary" role="status">

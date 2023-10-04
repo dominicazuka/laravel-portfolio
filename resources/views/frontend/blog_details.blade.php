@@ -73,7 +73,7 @@
                                             <li class="title">Tag:</li>
                                             <li class="tags-list">
                                                 @php
-                                                $tags = explode(',', $blog->blog_tags);
+                                                    $tags = explode(',', $blog->blog_tags);
                                                 @endphp
 
                                                 @foreach ($tags as $tag)
@@ -86,16 +86,20 @@
                                         <ul class="blog__details__social">
                                             <li class="title">Share :</li>
                                             <li class="social-icons">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-facebook"></i>
                                                 </a>
-                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-twitter-square"></i>
                                                 </a>
-                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-linkedin"></i>
                                                 </a>
-                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-pinterest"></i>
                                                 </a>
                                             </li>
@@ -228,7 +232,7 @@
                                                     @error('website')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-                                                    <input name="website" type="text" placeholder="Website*">
+                                                    <input name="website" type="text" placeholder="Website">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -243,8 +247,17 @@
                                                 <label for="checkbox">Save my name, email, and website in this browser for
                                                     the next time I comment.</label>
                                             </div>
-                                            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-                                            <button type="submit" class="btn">post a comment</button>
+                                            <div class="form-group mt-3 mb-5">
+                                                <span class="text-danger recaptcha" ></span>
+                                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="loader" style="display: none; justify-content: center;">
+                                                <div class="mb-3 spinner-border text-primary" role="status">
+                                                    <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div>
+                                                <button type="submit" class="btn">post a comment</button>
                                         </form>
                                     </div>
                                 </div>
@@ -345,6 +358,21 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
+                    $('#commentForm').submit(function(event) {
+                        if ($('#commentForm').valid()) {
+                            $('#loader').show();
+                            // Submit the form
+                            $('.recaptcha').text('');
+                            $('#commentForm').submit();
+                        } else {
+                            if (grecaptcha.getResponse() === '') {
+                                event.preventDefault();
+                                $('#commentForm').find('.recaptcha').text(
+                                    'Please complete the reCAPTCHA verification.');
+                                $('#commentForm').find('.recaptcha').show();
+                            }
+                        }
+                    });
                     $('#commentForm').validate({
                         rules: {
                             name: {

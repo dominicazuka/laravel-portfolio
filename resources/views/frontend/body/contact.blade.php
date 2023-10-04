@@ -9,7 +9,7 @@
                         <h2 class="title">Any questions? Feel free <br> to contact</h2>
                     </div>
                     <div class="homeContact__content">
-                        <p>I'm always happy to help with anything from general programming questions to specific technical problems. I can also provide feedback on your code or help you with your software development process.</p>
+                        <p>I am always happy to help with anything from general programming questions to specific technical problems. I can also provide feedback on your code or help you with your software development process.</p>
                         <h2 class="mail"><a href="mailto:Visitdominicazuka@gmail.com">Visitdominicazuka@gmail.com</a></h2>
                     </div>
                 </div>
@@ -59,8 +59,8 @@
                                 <textarea name="message" id="message" placeholder="Message*"></textarea>
                             </div>
                             <div class="form-group mt-3 mb-5">
-                                <span class="text-danger recaptcha"></span>
-                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                                <span class="text-danger recaptcha" style="display: flex; justify-content: center;"></span>
+                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" style="display: flex; justify-content: center;"></div>
                             </div>
                             <div class="form-group text-center" id="loader" style="display: none;">
                                 <div class="mb-3 spinner-border text-primary" role="status">

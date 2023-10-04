@@ -63,11 +63,11 @@ class ContactController extends Controller
         $data = $verificationResponse->json();
 
         // Log the data
-        \Log::info([
-            'response' => $response,
-            'data' => $data,
-            'secretKey' => $secretKey,
-        ]);
+        // \Log::info([
+        //     'response' => $response,
+        //     'data' => $data,
+        //     'secretKey' => $secretKey,
+        // ]);
 
         if (!$data['success']) {
             // CAPTCHA verification failed

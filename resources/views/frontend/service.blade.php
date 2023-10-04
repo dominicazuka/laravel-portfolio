@@ -128,8 +128,18 @@
                                         @enderror
                                         <textarea name="message" id="message" placeholder="Message*"></textarea>
                                     </div>
-                                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-                                    <button type="submit" class="btn">send message</button>
+                                    <div class="form-group mt-3 mb-5">
+                                        <span class="text-danger recaptcha" style="display: flex; justify-content: center;"></span>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" style="display: flex; justify-content: center;"></div>
+                                    </div>
+                                    <div class="form-group text-center" id="loader" style="display: none;">
+                                        <div class="mb-3 spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn">send message</button>
+                                    </div>
                                 </form>
                             </div>
                             {{--  contact info  --}}
@@ -200,6 +210,20 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#serviceForm').submit(function(event) {
+                if ($('#serviceForm').valid()) {
+                    $('#loader').show();
+                    // Submit the form
+                    $('.recaptcha').text('');
+                    $('#serviceForm').submit();
+                } else {
+                    if (grecaptcha.getResponse() === '') {
+                        event.preventDefault();
+                        $('#serviceForm').find('.recaptcha').text('Please complete the reCAPTCHA verification.');
+                        $('#serviceForm').find('.recaptcha').show();
+                    }
+                }
+            });
             $('#serviceForm').validate({
                 rules: {
                     name: {
