@@ -6837,7 +6837,7 @@ Breadcrumb
 }
 
 .homeContact__form form [type=submit] {
-    position: absolute;
+    /* position: absolute; */
     right: 0;
     bottom: 14px;
     border: none;

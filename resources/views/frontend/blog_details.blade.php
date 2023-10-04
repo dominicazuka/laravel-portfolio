@@ -173,7 +173,7 @@
                                                 @foreach ($allComments as $item)
                                                     <li class="comment__item">
                                                         <div class="comment__thumb">
-                                                            {{--  <img src=" {{ asset('frontend/assets/img/blog/comment_thumb01.png') }}" alt=""> to be implemented in future  --}}
+                                                            <img src=" {{ url('upload/anonymous.png') }}" alt="">
                                                         </div>
                                                         <div class="comment__content">
                                                             <div class="comment__avatar__info">
@@ -243,6 +243,7 @@
                                                 <label for="checkbox">Save my name, email, and website in this browser for
                                                     the next time I comment.</label>
                                             </div>
+                                            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                             <button type="submit" class="btn">post a comment</button>
                                         </form>
                                     </div>

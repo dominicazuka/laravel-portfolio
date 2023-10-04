@@ -80,10 +80,10 @@
                     <div class="col-lg-4">
                         <aside class="blog__sidebar">
                             <div class="widget">
-                                <form action="#" class="search-form">
+                                {{--  <form action="#" class="search-form">
                                     <input type="text" placeholder="Search">
                                     <button type="submit"><i class="fal fa-search"></i></button>
-                                </form>
+                                </form>  --}}
                             </div>
                             {{--  Recent Blog  --}}
                             <div class="widget">
@@ -117,7 +117,7 @@
                                 </ul>
                             </div>
                             {{--  Comments  --}}
-                            <div class="widget">
+                            {{--  <div class="widget">
                                 <h4 class="widget-title">Recent Comment</h4>
                                 <ul class="sidebar__comment">
                                     <li class="sidebar__comment__item">
@@ -141,9 +141,9 @@
                                             have</p>
                                     </li>
                                 </ul>
-                            </div>
+                            </div>  --}}
                             {{--  Popular Tags  --}}
-                            <div class="widget">
+                            {{--  <div class="widget">
                                 <h4 class="widget-title">Popular Tags</h4>
                                 <ul class="sidebar__tags">
                                     <li><a href="blog.html">Business</a></li>
@@ -158,7 +158,7 @@
                                     <li><a href="blog.html">landing page</a></li>
                                     <li><a href="blog.html">data</a></li>
                                 </ul>
-                            </div>
+                            </div>  --}}
                         </aside>
                     </div>
                 </div>

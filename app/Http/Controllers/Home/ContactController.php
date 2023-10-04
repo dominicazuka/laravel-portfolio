@@ -9,16 +9,19 @@ use Illuminate\Support\Carbon;
 use App\Models\MultiImage;
 use App\Models\Footer;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 class ContactController extends Controller
 {
-    public function Contact(){
+    public function Contact()
+    {
         $icons = MultiImage::all();
         $allFooter = Footer::find(1);
         return view('frontend.contact', compact('icons', 'allFooter'));
-    }//end method
+    } //end method
 
-    public function StoreMessage(Request $request){
+    public function StoreMessage(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|max:255',
             'email' => 'required|email|max:255',
@@ -39,7 +42,7 @@ class ContactController extends Controller
             'message.required' => 'Message is required',
         ]);
 
-       // Check if validation fails
+        // Check if validation fails
         if ($validator->fails()) {
             $errorNotification = [
                 'message' => 'Error occurred, message not sent. Check the form',
@@ -47,6 +50,32 @@ class ContactController extends Controller
             ];
 
             return redirect()->back()->with($errorNotification)->withErrors($validator);
+        }
+
+        // Retrieve reCAPTCHA secret key from .env
+        $secretKey = env('RECAPTCHA_SECRET_KEY');
+
+        // Verify reCAPTCHA
+        $response = request('g-recaptcha-response');
+
+        $verificationResponse = Http::post("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$response}");
+
+        $data = $verificationResponse->json();
+
+        // Log the data
+        \Log::info([
+            'response' => $response,
+            'data' => $data,
+            'secretKey' => $secretKey,
+        ]);
+
+        if (!$data['success']) {
+            // CAPTCHA verification failed
+            $errorNotification = [
+                'message' => 'reCAPTCHA verification failed. Please try again.',
+                'alert-type' => 'error',
+            ];
+            return redirect()->back()->with($errorNotification);
         }
 
         Contact::insert([
@@ -64,19 +93,21 @@ class ContactController extends Controller
         ];
 
         return redirect()->back()->with($notification);
-    }//end method
+    } //end method
 
-    public function ContactMessage(){
+    public function ContactMessage()
+    {
         $contacts = Contact::latest()->get();
         return view('admin.contact.all_contact', compact('contacts'));
-    }//end method
+    } //end method
 
-    public function DeleteMessage($id){
+    public function DeleteMessage($id)
+    {
         Contact::findOrFail($id)->delete();
-         $notification = array(
-             'message' => 'Contact Deleted Successfully',
-             'alert-type' => 'success'
-         );
-         return redirect()->back()->with($notification);
-    }//end method
+        $notification = array(
+            'message' => 'Contact Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } //end method
 }

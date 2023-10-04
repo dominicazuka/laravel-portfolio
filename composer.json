@@ -1,10 +1,30 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Full Stack Developer | YouTube Content Creator | JavaScript (MERN) Developer | Coding Tips and Tricks | Product & Graphic Designer | AWS, Docker, Kubernetes, & GCP Architect | PHP | Laravel | MySql | Sequelize | ORM",
     "keywords": [
-        "framework",
-        "laravel"
+        "Software development",
+        "PHP, Laravel, NodeJs, MongoDB, ExpressJS, ReactJs, React Native, MySql, AWS, Docker, GCP, Kubernetes, JavaScript",
+        "Mobile development",
+        "Backend development",
+        "Frontend development",
+        "Data science",
+        "Machine learning",
+        "Cloud computing",
+        "DevOps",
+        " Full stack development",
+        "Web APIs",
+        "Databases",
+        "Caching",
+        "Version control",
+        "Testing",
+        "Security",
+        "Fintech",
+        "Healthcare",
+        "E-commerce",
+        "Education",
+        "Gaming",
+        "Enterprise"
     ],
     "license": "MIT",
     "require": {

@@ -14,6 +14,7 @@ use App\Http\Controllers\Home\PartnerController;
 use App\Http\Controllers\Home\TestimonialController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\ResumeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -161,5 +162,6 @@ Route::get('/contact', [ContactController::class, 'Contact'])->name('contact.me'
 Route::post('/store/message', [ContactController::class, 'StoreMessage'])->name('store.message'); // User view
 Route::get('/', [HomeController::class, 'HomeMain'])->name('home'); // User view
 Route::post('/store/comment', [CommentController::class, 'StoreComment'])->name('store.comment'); // User view
+Route::get('/download-resume', [ResumeController::class, 'downloadResume'])->name('download.resume'); // User view
 
 require __DIR__ . '/auth.php';

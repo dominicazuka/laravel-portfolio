@@ -9,6 +9,10 @@
 @section('twitter_description', 'Learn about the services offered by Dominic Azuka, a Software Engineer and Full Stack
     Developer, covering web development, design, and more.')
 
+    @php
+        $allFooter = App\Models\Footer::find(1);
+    @endphp
+
     <!-- main-area -->
     <main>
 
@@ -76,7 +80,81 @@
 
                     {{--  SideBar  --}}
                     <div class="col-lg-4">
-                        <aside class="blog__sidebar">
+                        <aside class="services__sidebar">
+                            {{--  contact form  --}}
+                            <div class="widget">
+                                <h5 class="title">Get in Touch</h5>
+                                <form id="serviceForm" method="post" action="{{ route('store.message') }}"
+                                    class="sidebar__contact">
+                                    @csrf
+
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="name" type="text" placeholder="Enter name*" id="name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="email" type="email" placeholder="Enter your mail*" id="email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('subject')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="subject" type="text" placeholder="Enter your subject*"
+                                            id="subject">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input name="phone" type="text" placeholder="Your Phone*" id="phone">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span class="text-danger error-message"></span>
+                                        @error('message')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    </div>
+                                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                                    <button type="submit" class="btn">send message</button>
+                                </form>
+                            </div>
+                            {{--  contact info  --}}
+                            <div class="widget">
+                                <h5 class="title">Contact Information</h5>
+                                <ul class="sidebar__contact__info">
+                                    <li><span>Address :</span>{{ $allFooter->address }}</li>
+                                    <li><span>Mail :</span> {{ $allFooter->email }}</li>
+                                    <li><span>Phone :</span>{{ $allFooter->number }}</li>
+                                </ul>
+                                <ul class="sidebar__contact__social">
+                                    <li><a href="{{ $allFooter->facebook }}" target="_blank"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ $allFooter->twitter }}" target="_blank"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ $allFooter->linkedin }}" target="_blank"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $allFooter->instagram }}" target="_blank"><i
+                                                class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{ $allFooter->github }}" target="_blank"><i
+                                                class="fab fa-github"></i></a></li>
+                                    <li><a href="{{ $allFooter->youtube }}" target="_blank"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
                             {{--  Recent Blog  --}}
                             <div class="widget">
                                 <h4 class="widget-title">Recent Blog</h4>
@@ -100,7 +178,7 @@
                             </div>
                             {{--  Categories  --}}
                             <div class="widget">
-                                <h4 class="widget-title">Categories</h4>
+                                <h4 class="widget-title">Blog Categories</h4>
                                 <ul class="sidebar__cat">
                                     @foreach ($categories as $cat)
                                         <li class="sidebar__cat__item"><a
@@ -119,4 +197,58 @@
 
     </main>
     <!-- main-area-end -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#serviceForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    subject: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    },
+                    message: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    name: {
+                        required: 'Please Enter Name',
+                    },
+                    email: {
+                        required: 'Please Enter Email',
+                        email: 'Please Enter a Valid Email',
+                    },
+                    subject: {
+                        required: 'Please Enter Subject',
+                    },
+                    phone: {
+                        required: 'Please Enter Phone Number',
+                    },
+                    message: {
+                        required: 'Please Enter Message',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').find('.error-message').html(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
+            });
+        });
+    </script>
 @endsection

@@ -88,11 +88,11 @@
                                         type="button" role="tab" aria-controls="skills"
                                         aria-selected="false">Skills</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                {{--  <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="awards-tab" data-bs-toggle="tab" data-bs-target="#awards"
                                         type="button" role="tab" aria-controls="awards"
                                         aria-selected="false">awards</button>
-                                </li>
+                                </li>  --}}
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="education-tab" data-bs-toggle="tab"
                                         data-bs-target="#education" type="button" role="tab" aria-controls="education"
@@ -109,18 +109,18 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Communication</h5>
+                                                    <h5 class="title">Web Development</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 70%;"
-                                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">70%</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 84%;"
+                                                            aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="percentage">84%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Brain Storming</h5>
+                                                    <h5 class="title">Databases</h5>
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 90%;"
                                                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
@@ -131,7 +131,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Resourcefulness</h5>
+                                                    <h5 class="title">Version Control</h5>
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 50%;"
                                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
@@ -142,18 +142,18 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Figma</h5>
+                                                    <h5 class="title">Web Services and APIs</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 65%;"
-                                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">65%</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 79%;"
+                                                            aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="percentage">79%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Analytical Abilities</h5>
+                                                    <h5 class="title">Server Management and Deployment</h5>
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 80%;"
                                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
@@ -164,29 +164,29 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Skeatch</h5>
+                                                    <h5 class="title">Testing and Quality Assurance</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 45%;"
-                                                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">45%</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 75%;"
+                                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="percentage">75%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">User Research</h5>
+                                                    <h5 class="title">Frameworks and Libraries</h5>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 55%;"
-                                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="percentage">55%</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 85%;"
+                                                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="percentage">85%</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__skill__item">
-                                                    <h5 class="title">Adobe Tools</h5>
+                                                    <h5 class="title">Mobile App Development</h5>
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" style="width: 85%;"
                                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
@@ -198,7 +198,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
+                                {{--  Awards  --}}
+                                {{--  <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
                                     <div class="about__award__wrap">
                                         <div class="row justify-content-center">
                                             <div class="col-md-6 col-sm-9">
@@ -259,7 +260,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>  --}}
                                 <div class="tab-pane fade" id="education" role="tabpanel"
                                     aria-labelledby="education-tab">
                                     <div class="about__education__wrap">

@@ -42,7 +42,7 @@ class BlogController extends Controller
         ]);
         $image = $request->file('blog_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension(); //generate random name
-        Image::make($image)->resize(430, 327)->save('upload/blog/' . $name_gen);
+        Image::make($image)->resize(1020, 519)->save('upload/blog/' . $name_gen);
         $save_url = 'upload/blog/' . $name_gen;
         Blog::insert([
             'blog_category_id' => $request->blog_category_id,
@@ -83,7 +83,7 @@ class BlogController extends Controller
         if ($request->file('blog_image')) {
             $image = $request->file('blog_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(430, 327)->save('upload/blog/' . $name_gen);
+            Image::make($image)->resize(1020, 519)->save('upload/blog/' . $name_gen);
             $save_url = 'upload/blog/' . $name_gen;
 
             //delete the existing image on localhost

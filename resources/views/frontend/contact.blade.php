@@ -52,7 +52,7 @@
         <!-- contact-area -->
         <div class="contact-area">
             <div class="container">
-                <form id="myForm" method="post" action="{{ route('store.message') }}" class="contact__form">
+                <form id="contactPageForm" method="post" action="{{ route('store.message') }}" class="contact__form">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -90,6 +90,15 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         <textarea name="message" id="message" placeholder="Enter your message*"></textarea>
+                    </div>
+                    <div class="form-group text-center align-content-center justify-center mt-3 mb-5">
+                        <span class="text-danger recaptcha"></span>
+                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                    </div>
+                    <div class="form-group text-center" id="loader" style="display: none;">
+                        <div class="mb-3 spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
                     <button type="submit" class="btn">send message</button>
                 </form>
@@ -140,6 +149,73 @@
         <!-- contact-info-area-end -->
     </main>
 
-   
+
     <div style="height: 150px;"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#contactPageForm').submit(function(event) {
+                if ($('#contactPageForm').valid()) {
+                    $('#loader').show();
+                    // Submit the form
+                    $('.recaptcha').text('');
+                    $('#contactPageForm').submit();
+                } else {
+                    if (grecaptcha.getResponse() === '') {
+                        event.preventDefault();
+                        $('#contactPageForm').find('.recaptcha').text('Please complete the reCAPTCHA verification.');
+                        $('#contactPageForm').find('.recaptcha').show();
+                    }
+                }
+            });
+            $('#contactPageForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    subject: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    },
+                    message: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    name: {
+                        required: 'Please Enter Name',
+                    },
+                    email: {
+                        required: 'Please Enter Email',
+                        email: 'Please Enter a Valid Email',
+                    },
+                    subject: {
+                        required: 'Please Enter Subject',
+                    },
+                    phone: {
+                        required: 'Please Enter Phone Number',
+                    },
+                    message: {
+                        required: 'Please Enter Message',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').find('.error-message').html(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
+            });
+        });
+    </script>
 @endsection

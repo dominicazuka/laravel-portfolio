@@ -41,6 +41,7 @@
     {{-- toast notification --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -65,7 +66,7 @@
         @yield('main')
     </main>
     <!-- main-area-end -->
-    
+
     <!-- Contact-area -->
     @include('frontend.body.contact')
     <!-- Contact-area-end -->

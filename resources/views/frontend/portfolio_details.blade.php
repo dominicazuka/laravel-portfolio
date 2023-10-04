@@ -60,7 +60,7 @@
                         <aside class="services__sidebar">
                             <div class="widget">
                                 <h5 class="title">Get in Touch</h5>
-                                <form id="myForm" method="post" action="{{ route('store.message') }}"
+                                <form id="serviceForm" method="post" action="{{ route('store.message') }}"
                                     class="sidebar__contact">
                                     @csrf
 
@@ -104,6 +104,7 @@
                                         @enderror
                                         <textarea name="message" id="message" placeholder="Message*"></textarea>
                                     </div>
+                                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
 
                                     <button type="submit" class="btn">send message</button>
                                 </form>
@@ -153,7 +154,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#footerForm').validate({
+            $('#serviceForm').validate({
                 rules: {
                     name: {
                         required: true,

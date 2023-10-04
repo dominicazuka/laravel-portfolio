@@ -22,7 +22,7 @@
                         <h2 class="title">{{ $partnerPage->partner_title }}</h2>
                     </div>
                     <p>{!! $partnerPage->partner_description !!}</p>
-                    <a href="contact.html" class="btn">Start a conversation</a>
+                    <a href="{{ route('contact.me') }}" class="btn">Start a conversation</a>
                 </div>
             </div>
         </div>

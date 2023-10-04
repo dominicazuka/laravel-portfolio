@@ -39,7 +39,7 @@ class ServiceController extends Controller
         ]);
         $image = $request->file('service_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension(); //generate random name
-        Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+        Image::make($image)->resize(1020, 519)->save('upload/services/images/' . $name_gen);
         $save_url_image = 'upload/services/images/' . $name_gen;
 
         $icon = $request->file('service_icon');
@@ -93,7 +93,7 @@ class ServiceController extends Controller
             // Check if a new image is being uploaded
             $image = $request->file('service_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+            Image::make($image)->resize(1020, 519)->save('upload/services/images/' . $name_gen);
             $save_url_image = 'upload/services/images/' . $name_gen;
 
             // Delete the existing image on localhost
@@ -118,7 +118,7 @@ class ServiceController extends Controller
             // Check if a new image is being uploaded
             $image = $request->file('service_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(320, 240)->save('upload/services/images/' . $name_gen);
+            Image::make($image)->resize(1020, 519)->save('upload/services/images/' . $name_gen);
             $save_url_image = 'upload/services/images/' . $name_gen;
 
             // Delete the existing image on localhost
