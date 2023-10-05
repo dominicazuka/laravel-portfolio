@@ -17,8 +17,6 @@
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    {{-- toast notification --}}
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <!-- JAVASCRIPT -->
     <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -28,6 +26,7 @@
 
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     {{-- toast notification --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
@@ -52,6 +51,7 @@
             }
         @endif
     </script>
+
 </head>
 
 <body class="auth-body-bg">
@@ -67,6 +67,13 @@
                         <form class="form-horizontal mt-3" method="POST" action="{{ route('login') }}">
                             @csrf
                             <h4 class="text-muted text-center font-size-18 mb-3"><b>Login</b></h4>
+                            <!-- Display the custom error message if it exists -->
+                                @if (Session::has('custom_error_message'))
+                                    <div class="mb-4 mt-3 text-sm text-gray-600 alert alert-info alert-dismissible fade show" role="alert">
+                                        {{ __(Session::get('custom_error_message')) }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endif
                             <!-- Username or Email -->
                             <div>
                                 <x-input-label for="login" :value="__('Username or Email')" />

@@ -52,10 +52,10 @@
                                             class="far fa-long-arrow-right"></i></a>
                                 </div>
                                 <div class="standard__blog__content">
-                                    <div class="blog__post__avatar">
+                                    {{--  <div class="blog__post__avatar">
                                         <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
                                         <span class="post__by">By : <a href="#">Halina Spond</a></span>
-                                    </div>
+                                    </div>  --}}
                                     <h2 class="title"><a
                                             href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a></h2>
                                     <p>

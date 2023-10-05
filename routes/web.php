@@ -32,10 +32,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'check.admin'])->name('dashboard');
 
 //any admin route pasted here would hit a 404 error if session has expired because of the middleware('auth') method
-Route::middleware('auth', 'verified')->group(function () {
+Route::middleware('auth', 'verified', 'check.admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

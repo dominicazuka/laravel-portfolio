@@ -40,10 +40,10 @@
 
                                 <tbody>
                                     @php($i = 1)
-                                    @foreach ($blogs as $key => $item)
+                                    @foreach ($blogs as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item['blog_id']['blog_title '] }}</td>
+                                            <td>{{ $item['category']['blog_category'] }}</td>
                                             <td>{{ $item->blog_title }}</td>
                                             <td>{{ $item->blog_tags }}</td>
                                             <td>

@@ -39,7 +39,7 @@
                 {{--  <!-- breadcrumb-area-end -->  --}}
 
 
-                {{--  <!-- blog-details-area -->  --}}
+                {{--  <!-- service-details-area -->  --}}
                 <section class="standard__blog blog__details">
                     <div class="container">
                         <div class="row">
@@ -51,16 +51,16 @@
                                     <div class="blog__details__content services__details__content">
                                         <h2 class="title">{{ $service->service_title }}</h2>
                                         <p>{!! $service->service_description !!}</p>
-                                        <div class="services__details__img">
+                                        {{--  <div class="services__details__img">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <img src="assets/img/blog/blog_details_img01.jpg" alt="">
+                                                    <img src="{{ asset('frontend/assets/img/blog/blog_details_img01.jpg')}}" alt="">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <img src="assets/img/blog/blog_details_img02.jpg" alt="">
+                                                    <img src="{{ asset('frontend/assets/img/blog/blog_details_img02.jpg')}}" alt="">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  --}}
                                     </div>
                                     {{--  Tags  --}}
                                     <div class="blog__details__bottom">
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </section>
-                {{--  <!-- blog-details-area-end -->  --}}
+                {{--  <!-- service-details-area-end -->  --}}
                 <div style="height: 150px;"></div>
             </main>
             {{--  <!-- main-area-end -->  --}}
