@@ -353,7 +353,7 @@ label {
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
     vertical-align: middle;
-    white-space: break-spaces;
+    /* white-space: break-spaces; */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -4045,8 +4045,9 @@ Breadcrumb
 
 .services__sidebar .widget .title {
     font-family: "Roboto", sans-serif;
-    font-size: 24px;
+    font-size: 14px;
     margin-bottom: 26px;
+    word-break: break-all;
 }
 
 .services__sidebar .sidebar__contact input {
@@ -4667,7 +4668,7 @@ Breadcrumb
 }
 
 .portfolio__inner {
-    padding: 120px 0;
+    padding: 120px 0px 0px 0px;
 }
 
 .portfolio__inner__nav {
@@ -4785,6 +4786,7 @@ Breadcrumb
 @media (max-width: 1199.98px) {
     .portfolio__inner__content {
         padding: 30px 0 30px 35px;
+        margin-bottom: 20px;
     }
 }
 
@@ -6100,6 +6102,7 @@ Breadcrumb
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 0.4s linear;
+    word-break: break-all;
 }
 
 .rc__post__content .post-date {
@@ -7060,7 +7063,7 @@ Breadcrumb
 }
 
 .footer__widget__text {
-    margin-right: 40px;
+    /* margin-right: 40px; */
 }
 
 .footer__widget__address .mail {
@@ -7104,6 +7107,7 @@ Breadcrumb
     font-size: 14px;
     margin-bottom: 0;
     color: #898989;
+    text-align: justify;
 }
 
 /*=============================

@@ -22,7 +22,7 @@
                             <h2 class="title">Portfolio Page</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
                                         Portfolio</li>
                                 </ol>
@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="portfolio__inner__active">
                     @foreach ($portfolio as $item)
-                        <div class="portfolio__inner__item grid-item cat-two cat-three">
+                        <div class="portfolio__inner__item grid-item cat-two cat-three mb-3">
                             <div class="row gx-0 align-items-center">
                                 <div class="col-lg-6 col-md-10">
                                     <div class="portfolio__inner__thumb">

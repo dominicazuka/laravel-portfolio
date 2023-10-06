@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="portfolio__overlay__content">
                                         <span>{{ $item->portfolio_name }}</span>
-                                        <h4 class="title"><a
+                                        <h4 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
                                                 href="{{ route('portfolio.details', $item->id) }}">{{ Str::limit($item->portfolio_title, 30)}}</a>
                                         </h4>
                                         <a href="{{ route('portfolio.details', $item->id) }}" class="link">Case

@@ -28,7 +28,7 @@
                             <h2 class="title">About me</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">About Me</li>
                                 </ol>
                             </nav>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <p class="desc">{{ $aboutpage->short_description }}</p>
-                            <a href="{{ route('download.resume') }}" class="btn">Download my resume</a>
+                            <a href="{{ route('download.resume') }}" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">Download my resume</a>
                         </div>
                     </div>
                 </div>
@@ -432,7 +432,7 @@
                     @endforeach
                 </div>
                 <div class="blog__button text-center">
-                    <a href="{{ route('home.blog') }}" class="btn">more blog</a>
+                    <a href="{{ route('home.blog') }}" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">more blog</a>
                 </div>
             </div>
         </section>

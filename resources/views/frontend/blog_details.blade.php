@@ -29,7 +29,7 @@
                                     <h2 class="title" style="word-wrap: break-word;">{{ $blog->blog_title }}</h2>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
                                         </ol>
                                     </nav>
@@ -258,7 +258,7 @@
                                                     <span class="sr-only">Loading...</span>
                                                 </div>
                                             </div>
-                                                <button type="submit" class="btn">post a comment</button>
+                                                <button type="submit" class="btn shadow-lg drop-shadow-lg" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">post a comment</button>
                                         </form>
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@
                                                     </div>
                                                     <div class="rc__post__content">
                                                         <h5 class="title"><a
-                                                                href="{{ route('blog.details', $all->id) }}">{{ Str::limit($all->blog_title, 30) }}</a>
+                                                                href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
                                                         </h5>
                                                         <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                             {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

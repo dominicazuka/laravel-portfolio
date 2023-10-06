@@ -21,7 +21,7 @@
                             <h2 class="title" style="word-wrap: break-word;">{{ $categoryName->blog_category }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Blog</li>
                                 </ol>
                             </nav>
@@ -95,7 +95,7 @@
                                     @foreach ($allBlogs as $all)
                                         <li class="rc__post__item">
                                             <div class="rc__post__thumb">
-                                                <a href="blog-details.html"><img src="{{ asset($all->blog_image) }}"
+                                                <a href="{{ route('blog.details', $all->id) }}"><img src="{{ asset($all->blog_image) }}"
                                                         alt=""></a>
                                             </div>
                                             <div class="rc__post__content">

@@ -260,7 +260,7 @@ label {
     touch-action: manipulation;
     @include transition(.3s);
     vertical-align: middle;
-    white-space: break-spaces;
+    // white-space: break-spaces;
     position: relative;
     z-index: 1;
     overflow: hidden;

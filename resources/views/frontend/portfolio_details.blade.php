@@ -24,7 +24,7 @@
                             <h2 class="title" style="word-wrap: break-word;">{{ $portfolio->portfolio_name }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page" style="word-wrap: break-word;">
                                         {{ $portfolio->portfolio_name }}</li>
                                 </ol>
@@ -125,8 +125,8 @@
                                     <li><span>Location :</span> {{ $portfolio->portfolio_location }}</li>
                                     <li><span>Client :</span> {{ $portfolio->portfolio_client }}</li>
                                     <li class="category"><span>Category :</span>{{ $portfolio->portfolio_category }}</li>
-                                    <li><span>Project Link :</span> <a href="{{ $portfolio->portfolio_link }}"
-                                            target="_blank">{{ $portfolio->portfolio_link }}</a></li>
+                                    <li style="word-wrap: break-word;"><span>Project Link :</span> <a href="{{ $portfolio->portfolio_link }}"
+                                            target="_blank" style="word-wrap: break-word;">{{ $portfolio->portfolio_link }}</a></li>
                                 </ul>
                             </div>
                             <div class="widget">
