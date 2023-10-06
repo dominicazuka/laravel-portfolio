@@ -8,6 +8,9 @@ use App\Models\Comment;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
+use App\Mail\CommentNotification;
+use Illuminate\Support\Facades\Mail;
+
 
 class CommentController extends Controller
 {
@@ -81,6 +84,16 @@ class CommentController extends Controller
             'message' => $request->message,
             'created_at' => Carbon::now(),
         ]);
+
+        // Get the admin email from the .env file
+        $adminEmail = env('MAIL_ADMIN_EMAIL', 'karlidpacman@gmail.com');
+
+        // Send notification email to admin
+        Mail::to($adminEmail)->send(new CommentNotification([
+        'title' => $request->blog_title,
+        'name' => $request->name,
+        'message' => $request->message,
+        ]));
 
         $notification = [
             'message' => 'Comment Submitted Successfully',

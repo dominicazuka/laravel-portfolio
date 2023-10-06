@@ -204,6 +204,7 @@
                                         <form id="commentForm" method="post" action="{{ route('store.comment') }}">
                                             @csrf
                                             <input name="blog_id" type="hidden" value="{{ $blog->id }}">
+                                            <input name="blog_title" type="hidden" value="{{ $blog->blog_title }}">
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <span class="text-danger error-message"></span>

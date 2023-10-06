@@ -10,6 +10,9 @@ use App\Models\MultiImage;
 use App\Models\Footer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
+use App\Mail\ContactNotification;
+use Illuminate\Support\Facades\Mail;
+
 
 class ContactController extends Controller
 {
@@ -86,6 +89,18 @@ class ContactController extends Controller
             'message' => $request->message,
             'created_at' => Carbon::now(),
         ]);
+        
+        // Get the admin email from the .env file
+        $adminEmail = env('MAIL_ADMIN_EMAIL', 'karlidpacman@gmail.com');
+        
+        // Send notification email to admin
+        Mail::to($adminEmail)->send(new ContactNotification([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]));
 
         $notification = [
             'message' => 'Message Submitted Successfully',

@@ -163,5 +163,8 @@ Route::post('/store/message', [ContactController::class, 'StoreMessage'])->name(
 Route::get('/', [HomeController::class, 'HomeMain'])->name('home'); // User view
 Route::post('/store/comment', [CommentController::class, 'StoreComment'])->name('store.comment'); // User view
 Route::get('/download-resume', [ResumeController::class, 'downloadResume'])->name('download.resume'); // User view
+Route::get('/email', function () {
+    return view('emails.email');
+});
 
 require __DIR__ . '/auth.php';
