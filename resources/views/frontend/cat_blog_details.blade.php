@@ -2,9 +2,12 @@
 @section('main')
 
 @section('title', $categoryName->blog_category . ' Category - Software Engineer | Full Stack Developer')
-@section('description', 'Browse blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, covering various software development topics.')
-@section('og_description', 'Explore blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, sharing knowledge about software development.')
-@section('twitter_description', 'Discover blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s blog, focused on software development.')
+@section('description', 'Browse blog posts in the "' . $categoryName->blog_category . '" category on Dominic Azuka\'s
+    blog, covering various software development topics.')
+@section('og_description', 'Explore blog posts in the "' . $categoryName->blog_category . '" category on Dominic
+    Azuka\'s blog, sharing knowledge about software development.')
+@section('twitter_description', 'Discover blog posts in the "' . $categoryName->blog_category . '" category on Dominic
+    Azuka\'s blog, focused on software development.')
 
     <!-- main-area -->
     <main>
@@ -15,7 +18,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10">
                         <div class="breadcrumb__wrap__content">
-                            <h2 class="title">{{ $categoryName->blog_category }}</h2>
+                            <h2 class="title" style="word-wrap: break-word;">{{ $categoryName->blog_category }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -56,7 +59,7 @@
                                         <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
                                         <span class="post__by">By : <a href="#">Halina Spond</a></span>
                                     </div>  --}}
-                                    <h2 class="title"><a
+                                    <h2 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
                                             href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a></h2>
                                     <p>
                                         {!! Str::limit($item->blog_description, 200) !!}
@@ -96,7 +99,8 @@
                                                         alt=""></a>
                                             </div>
                                             <div class="rc__post__content">
-                                                <h5 class="title"><a href="blog-details.html">{{ $all->blog_title }}</a>
+                                                <h5 class="title"><a
+                                                        href="{{ route('blog.details', $all->id) }}">{{ Str::limit($all->blog_title, 30) }}</a>
                                                 </h5>
                                                 <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                     {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

@@ -29,8 +29,8 @@
                                 <div class="services__icon">
                                     <img class="light" src="{{ $item->service_icon }}" alt="">
                                 </div>
-                                <h3 class="title"><a
-                                        href="{{ route('service.details', $item->id) }}">{{ $item->service_title }}</a>
+                                <h3 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
+                                        href="{{ route('service.details', $item->id) }}">{{ Str::limit($item->service_title , 30)}}</a>
                                 </h3>
                                 <div>{!! Str::limit($item->service_description, 200) !!}</div>
                                 {{--  <ul class="services__list">
@@ -39,7 +39,7 @@
                                 <li>Business Consulting</li>
                                 <li>Go To Market</li>
                             </ul>  --}}
-                                <a href="{{ route('service.details', $item->id) }}" class="btn border-btn">Read more</a>
+                                <a href="{{ route('service.details', $item->id) }}" class="btn border-btn mt-3" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">Read more</a>
                             </div>
                         </div>
                     </div>

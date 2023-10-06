@@ -2,11 +2,14 @@
         @section('main')
 
         @section('title', $service->service_title . ' Service - Software Engineer | Full Stack Developer')
-        @section('description', 'Learn about the detailed services offered by Dominic Azuka, a Software Engineer and
+        @section('description',
+            'Learn about the detailed services offered by Dominic Azuka, a Software Engineer and
             Full Stack Developer.')
-        @section('og_description', 'Explore the comprehensive services provided by Dominic Azuka, a Software Engineer
+        @section('og_description',
+            'Explore the comprehensive services provided by Dominic Azuka, a Software Engineer
             and Full Stack Developer.')
-        @section('twitter_description', 'Discover the range of services offered by Dominic Azuka, a Software Engineer
+        @section('twitter_description',
+            'Discover the range of services offered by Dominic Azuka, a Software Engineer
             and Full Stack Developer.')
 
             {{--  <!-- main-area -->  --}}
@@ -17,7 +20,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-6 col-lg-8 col-md-10">
                                 <div class="breadcrumb__wrap__content">
-                                    <h2 class="title">{{ $service->service_title }}</h2>
+                                    <h2 class="title" style="word-wrap: break-word;">{{ $service->service_title }}</h2>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -49,7 +52,7 @@
                                         <img src="{{ asset($service->service_image) }}" alt="">
                                     </div>
                                     <div class="blog__details__content services__details__content">
-                                        <h2 class="title">{{ $service->service_title }}</h2>
+                                        <h2 class="title" style="word-wrap: break-word;">{{ $service->service_title }}</h2>
                                         <p>{!! $service->service_description !!}</p>
                                         {{--  <div class="services__details__img">
                                             <div class="row">
@@ -68,16 +71,20 @@
                                         <ul class="blog__details__social">
                                             <li class="title">Share :</li>
                                             <li class="social-icons">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-facebook"></i>
                                                 </a>
-                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-twitter-square"></i>
                                                 </a>
-                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-linkedin"></i>
                                                 </a>
-                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}" target="_blank">
+                                                <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}"
+                                                    target="_blank">
                                                     <i class="fab fa-pinterest"></i>
                                                 </a>
                                             </li>
@@ -106,8 +113,9 @@
                                                                 src="{{ asset($all->blog_image) }}" alt=""></a>
                                                     </div>
                                                     <div class="rc__post__content">
-                                                        <h5 class="title"><a
-                                                                href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
+                                                        <h5 class="title"
+                                                            style="word-wrap: break-word; overflow-wrap: break-word;"><a
+                                                                href="{{ route('blog.details', $all->id) }}">{{ Str::limit($all->blog_title, 25) }}</a>
                                                         </h5>
                                                         <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                             {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

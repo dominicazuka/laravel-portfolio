@@ -21,11 +21,11 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10">
                         <div class="breadcrumb__wrap__content">
-                            <h2 class="title">{{ $portfolio->portfolio_name }}</h2>
+                            <h2 class="title" style="word-wrap: break-word;">{{ $portfolio->portfolio_name }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">
+                                    <li class="breadcrumb-item active" aria-current="page" style="word-wrap: break-word;">
                                         {{ $portfolio->portfolio_name }}</li>
                                 </ol>
                             </nav>
@@ -52,7 +52,7 @@
                             <img src="{{ asset($portfolio->portfolio_image) }}" alt="">
                         </div>
                         <div class="services__details__content">
-                            <h2 class="title">{{ $portfolio->portfolio_title }}</h2>
+                            <h2 class="title" style="word-wrap: break-word;">{{ $portfolio->portfolio_title }}</h2>
                             <p>{!! $portfolio->portfolio_description !!}</p>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn">send message</button>
+                                        <button type="submit" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">send message</button>
                                     </div>
                                 </form>
                             </div>

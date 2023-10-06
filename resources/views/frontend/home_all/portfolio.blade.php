@@ -25,13 +25,13 @@
 
                             @foreach ($portfolio as $item)
                                 <div class="portfolio__item">
-                                    <div class="portfolio__thumb">
+                                    <div class="portfolio__thumb shadow-lg drop-shadow-xl">
                                         <img src="{{ asset($item->portfolio_image) }}" alt="">
                                     </div>
                                     <div class="portfolio__overlay__content">
                                         <span>{{ $item->portfolio_name }}</span>
                                         <h4 class="title"><a
-                                                href="{{ route('portfolio.details', $item->id) }}">{{ $item->portfolio_title }}</a>
+                                                href="{{ route('portfolio.details', $item->id) }}">{{ Str::limit($item->portfolio_title, 30)}}</a>
                                         </h4>
                                         <a href="{{ route('portfolio.details', $item->id) }}" class="link">Case
                                             Study</a>

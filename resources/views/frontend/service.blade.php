@@ -26,7 +26,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Services</li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,7 +63,7 @@
                                         <div class="thumb"><img src="{{ asset($item->service_icon) }}" alt="">
                                         </div>
                                     </div>
-                                    <h2 class="title"><a
+                                    <h2 class="title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;"><a
                                             href="{{ route('service.details', $item->id) }}">{{ $item->service_title }}</a>
                                     </h2>
                                     <p>
@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn">send message</button>
+                                        <button type="submit" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">send message</button>
                                     </div>
                                 </form>
                             </div>
@@ -176,8 +176,8 @@
                                                         src="{{ asset($all->blog_image) }}" alt=""></a>
                                             </div>
                                             <div class="rc__post__content">
-                                                <h5 class="title"><a
-                                                        href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
+                                                <h5 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
+                                                        href="{{ route('blog.details', $all->id) }}">{{Str::limit($all->blog_title, 20)}}</a>
                                                 </h5>
                                                 <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                     {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

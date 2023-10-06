@@ -41,7 +41,7 @@
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">
-                                <a href="{{ route('contact.me') }}" class="btn">Contact</a>
+                                <a href="{{ route('contact.me') }}" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">Contact</a>
                             </div>
                         </nav>
                     </div>

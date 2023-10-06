@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <p class="desc">{{ $aboutpage->short_description }}</p>
-                            <a href="about.html" class="btn">Download my resume</a>
+                            <a href="{{ route('download.resume') }}" class="btn">Download my resume</a>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--  Awards  --}}
+                                {{--  Licenses & Certifications  --}}
                                 {{--  <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
                                     <div class="about__award__wrap">
                                         <div class="row justify-content-center">
@@ -267,44 +267,51 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="about__education__item">
-                                                    <h3 class="title">DPR Engineering Dhaka University</h3>
-                                                    <span class="date">2004 – 2016</span>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have suffered alteration in some form, by injected
-                                                        humour,There are many variations of passages of Lorem Ipsum
-                                                        available, but the majority have suffered
-                                                        alteration in some form, by injected humour.</p>
+                                                    <h3 class="title">B.Sc Computer Science at Federal University Wukari, Taraba State.</h3>
+                                                    <span class="date">2014 – 2018</span>
+                                                    <p>This four-year program provided me with a strong foundation in computer science concepts, programming languages, algorithms, and problem-solving skills. It was a transformative period where I not only gained knowledge but also developed a passion for technology and innovation.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__education__item">
-                                                    <h3 class="title">Product Designer at google</h3>
-                                                    <span class="date">2021 – Present</span>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have suffered alteration in some form, by injected
-                                                        humour,There are many variations of passages of Lorem Ipsum
-                                                        available.</p>
+                                                    <h3 class="title">CISCO IT Essentials/Hardware Troubleshooting, Computer Engineering at Industrial Training Fund Abuja</h3>
+                                                    <span class="date">2017 – 2018</span>
+                                                    <p>During my time at the Industrial Training Fund Abuja, I had the opportunity to delve deep into IT Essentials and Hardware Troubleshooting in the field of Computer Engineering. This hands-on training program allowed me to develop practical skills, including the installation of various operating systems, troubleshooting computer issues, replacing basic computer components, and performing preventive and corrective maintenance.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__education__item">
-                                                    <h3 class="title">Computer Science - england</h3>
-                                                    <span class="date">2008 – 2012</span>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have suffered alteration in some form, by injected
-                                                        humour,There are many variations of passages of Lorem Ipsum
-                                                        available.</p>
+                                                    <h3 class="title">CISCO CCNA Routing and Switching, Computer Systems Networking and Telecommunications at Industrial Training Fund Abuja</h3>
+                                                    <span class="date">2017 – 2018</span>
+                                                    <p>This program honed my abilities in designing, calculating, and implementing subnet masks and addresses in both IPv4 and IPv6 networks. Additionally, I gained proficiency in using common network utilities and navigating the Cisco Command Line Interface (CLI). Active participation in Cisco Networking activities and societies enriched my understanding of networking concepts.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="about__education__item">
-                                                    <h3 class="title">Pro product design with udemey</h3>
-                                                    <span class="date">2016 - 2020</span>
-                                                    <p>There are many variations of passages of Lorem Ipsum available, but
-                                                        the majority have suffered alteration in some form, by injected
-                                                        humour,There are many variations of passages of Lorem Ipsum
-                                                        available, but the majority have suffered
-                                                        alteration in some form, by injected humour.</p>
+                                                    <h3 class="title">UI/UX Design With Figma at Udemy</h3>
+                                                    <span class="date">Issued Jul 2023</span>
+                                                    <p>I completed a course on UI/UX Design using Figma on Udemy in July 2023. This course equipped me with essential skills in UI/UX design and proficient harness of the Figma software. I gained valuable insights into creating user-friendly interfaces and optimizing user experiences.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="about__education__item">
+                                                    <h3 class="title">Security CISSP (ISC2-CISSP) at (ISC)²</h3>
+                                                    <span class="date">Issued Jun 2023</span>
+                                                    <p>I earned the (ISC)² Certified Information Systems Security Professional (CISSP) certification in June 2023. This certification demonstrates my expertise in cybersecurity and information security management. It is a testament to my commitment to ensuring the security and integrity of digital systems.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="about__education__item">
+                                                    <h3 class="title">Members Only Blog using PHP, MySQL & Ajax at Udemy</h3>
+                                                    <span class="date">Issued Sep 2022</span>
+                                                    <p>I completed a project where I developed a Members Only Blog using PHP, MySQL, and Ajax in September 2022. This project showcased my skills in wireframing, implementing REST APIs, and enhancing user experiences. It allowed me to gain hands-on experience in web development and database management.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="about__education__item">
+                                                    <h3 class="title">Responsive Web Design at freeCodeCamp</h3>
+                                                    <span class="date">Issued Jul 2021</span>
+                                                    <p>I earned a credential in Responsive Web Design from freeCodeCamp in July 2021. This certification demonstrates my proficiency in creating responsive and user-friendly web designs. I have a strong foundation in wireframing and ensuring optimal user experiences across various devices.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -338,7 +345,7 @@
                                         <img src="{{ $item->service_icon }}" alt="">
                                     </div>
                                     <div class="services__style__two__content">
-                                        <h3 class="title"><a
+                                        <h3 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
                                                 href="{{ route('service.details', $item->id) }}">{{ $item->service_title }}</a>
                                         </h3>
                                         <p>{!! Str::limit($item->service_description, 50) !!}</p>
@@ -409,13 +416,13 @@
                                             alt=""></a>
                                     <div class="blog__post__tags">
                                         <a
-                                            href="{{ route('category.blog', $item->blog_category_id) }}">{{ $item['category']['blog_category'] }}</a>
+                                            href="{{ route('category.blog', $item->blog_category_id) }}" style="word-wrap: break-word; overflow-wrap: break-word;">{{ $item['category']['blog_category'] }}</a>
                                     </div>
                                 </div>
                                 <div class="blog__post__content">
                                     <span
                                         class="date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
-                                    <h3 class="title"><a
+                                    <h3 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
                                             href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a>
                                     </h3>
                                     <a href="{{ route('blog.details', $item->id) }}" class="read__more">Read mORe</a>

@@ -15,7 +15,7 @@
                     <h2 class="title wow fadeInUp" data-wow-delay=".2s"><span>
                         {{ $homeslide->title }}</span></h2>
                     <p class="wow fadeInUp" data-wow-delay=".4s">{{ $homeslide->short_title }}</p>
-                    <a href="{{ route('home.about') }}" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">more about me</a>
+                    <a href="{{ route('home.about') }}" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">more about me</a>
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@
                             <div class="row gx-0 align-items-center">
                                 <div class="col-lg-6 col-md-10">
                                     <div class="portfolio__inner__thumb">
-                                        <a href="portfolio-details.html">
+                                        <a href="{{ route('portfolio.details', $item->id) }}">
                                             <img src="{{ asset($item->portfolio_image) }}" alt="">
                                         </a>
                                     </div>

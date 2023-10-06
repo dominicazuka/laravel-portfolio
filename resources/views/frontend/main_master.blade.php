@@ -52,9 +52,9 @@
     <!-- preloader-end -->
 
     <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html">
+    <button class="scroll-top scroll-to-target" data-target="html" style="display: flex; align-items: center; justify-content: center; border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
         <i class="fas fa-angle-up"></i>
-    </button>
+    </button>    
     <!-- Scroll-top-end-->
 
     {{-- header start --}}

@@ -62,7 +62,7 @@
                                         <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
                                         <span class="post__by">By : <a href="#">Halina Spond</a></span>
                                     </div>  --}}
-                                    <h2 class="title"><a
+                                    <h2 class="title" style="word-wrap: break-word; overflow-wrap: break-word;"><a
                                             href="{{ route('blog.details', $item->id) }}">{{ $item->blog_title }}</a></h2>
                                     <p>
                                         {!! Str::limit($item->blog_description, 200) !!}
@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="rc__post__content">
                                                 <h5 class="title"><a
-                                                        href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
+                                                        href="{{ route('blog.details', $all->id) }}">{{Str::limit($all->blog_title, 30)}}</a>
                                                 </h5>
                                                 <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                     {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

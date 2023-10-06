@@ -26,7 +26,7 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-6 col-lg-8 col-md-10">
                                 <div class="breadcrumb__wrap__content">
-                                    <h2 class="title">{{ $blog->blog_title }}</h2>
+                                    <h2 class="title" style="word-wrap: break-word;">{{ $blog->blog_title }}</h2>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -64,7 +64,7 @@
                                             {{--  <li><i class="fal fa-comments-alt"></i> <a href="#">Comment (08)</a></li>
                                         <li class="post-share"><a href="#"><i class="fal fa-share-all"></i> (18)</a></li>  --}}
                                         </ul>
-                                        <h2 class="title">{{ $blog->blog_title }}</h2>
+                                        <h2 class="title" style="word-wrap: break-word;">{{ $blog->blog_title }}</h2>
                                         <p>{!! $blog->blog_description !!}</p>
                                     </div>
                                     {{--  Tags  --}}
@@ -284,7 +284,7 @@
                                                     </div>
                                                     <div class="rc__post__content">
                                                         <h5 class="title"><a
-                                                                href="{{ route('blog.details', $all->id) }}">{{ $all->blog_title }}</a>
+                                                                href="{{ route('blog.details', $all->id) }}">{{ Str::limit($all->blog_title, 30) }}</a>
                                                         </h5>
                                                         <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                                             {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }}</span>

@@ -3573,13 +3573,13 @@ Breadcrumb
 05. Services
 =============================*/
 .services {
-    padding: 130px 0 0;
+    padding: 80px 0 0;
     position: relative;
 }
 
 @media (max-width: 991.98px) {
     .services {
-        padding: 120px 0 90px;
+        padding: 100px 0 90px;
     }
 }
 
@@ -6731,9 +6731,9 @@ Breadcrumb
     margin-top: 28px;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 768px) {
     .homeContact__content .mail {
-        font-size: 27px;
+        font-size: 20px;
     }
 }
 

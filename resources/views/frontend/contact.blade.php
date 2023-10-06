@@ -100,7 +100,7 @@
                             <span class="sr-only">Loading...</span>
                         </div>
                     </div>
-                    <button type="submit" class="btn">send message</button>
+                    <button type="submit" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">send message</button>
                 </form>
             </div>
         </div>

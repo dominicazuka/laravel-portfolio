@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <p class="desc">{{ $aboutpage->short_description }}</p>
-                    <a href="{{ route('download.resume') }}" class="btn">Download my resume</a>
+                    <a href="{{ route('download.resume') }}" class="btn" style="border-radius: 50px; padding: 10px 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">Download my resume</a>
                 </div>
             </div>
         </div>
